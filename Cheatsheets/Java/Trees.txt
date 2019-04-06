@@ -1,0 +1,279 @@
+
+
+           		 TREE
+
+				A <--------A is a Root(top node)
+Path/edge(connects nodes)---->/   \ 
+                             B      C<------C is the PARENT of F,G
+                            / \    / \                  
+   D is a CHILD of B-----> D   E  F   G <---Leaf(node with no children)              
+                                 / \                  
+                                H   I <--- FHI is a SUBTREE    
+
+
+
+           			BINARY TREE
+
+	only will ever have 2 childres, max children is 2, dont need to have both children
+	keys have a middle value as the parent
+	  
+                                                          
+                                50                  
+                              /    \                            
+left child less than parent->30     60 <---right child more than parent
+                              \     / \                 
+                               34  52  62  <--- leaf                 
+                                  /  \                       
+                                 51  54                       
+                                                  
+                                                                           
+                               UNBALANCED TREE
+most of the node are found on one side of the root
+random data normall isnt unblanced
+ordered data tends to create unbalancs trees
+they are bad and slow                      
+                                  50                                 
+                                /    \              
+                               30    60                                   
+                                    /   \                    
+                                   52   62                          
+                                  /  \                      
+                                 51   54                   
+                                       \                             
+                                         58                
+                                                              
+
+
+						WHY USE A TREE
+
+search, and insert/delete items quickly in a tree
+ordered arrays are bad at insertions/deletions
+finding items in a linked list is slow
+time needed to perform an operatiopn on a tree is O(log N) <--order of log N
+on avg a tree is more efficient if you need to perform many different types of operation
+
+						TRAVERSAL
+
+						In order Traversal          50			                 					
+                                                                           /   \                
+Aim for the smalles value first                                          25    75                                   
+start at 1st left child                                                 /  \     \          25 -> 15 then 25 -> 30 then 50 -> 75 then 75 -> 85                                      
+when Null is reached then move up in value                            15   30     85                                         
+                                                                                                                     
+
+                                                                                           
+public class BinaryTree {
+	
+	Node root;
+	
+	public void addNode(int key, String name) {
+		
+		Node newNode = new Node(key, name);
+		
+		if(root == null) {
+			
+			root = newNode;
+			
+		} else {
+			
+			Node focusNode = root;
+			
+			Node parent;
+			
+			while(true) {
+				
+				parent = focusNode;
+				
+				if (key < focusNode.key) {
+					
+					focusNode = focusNode.leftChild;
+					
+					if (focusNode == null) {
+						
+						parent.leftChild = newNode;
+						return;
+						
+					}
+				}  else {
+					
+					focusNode = focusNode.rightChild;
+					
+					if (focusNode == null) {
+						
+						parent.rightChild = newNode;
+						return;
+					}
+				}
+			}
+		}
+	}
+
+	public void inOrderTraverseTree(Node focusNode) {
+		
+		if(focusNode != null) {
+			
+			inOrderTraverseTree(focusNode.leftChild);   <------------------ 1             
+			
+			System.out.println(focusNode);              <------------------  2
+			
+			inOrderTraverseTree(focusNode.rightChild);  <------------------- 3
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		BinaryTree theTree = new BinaryTree();
+		
+		theTree.addNode(50, "Boss");
+		theTree.addNode(25, "VP");
+		theTree.addNode(15, "Office Manager");
+		theTree.addNode(30, "Secretary");
+		theTree.addNode(75, "Sales Manager");
+		theTree.addNode(85, "Salesman 1");
+		
+		theTree.inOrderTraverseTree(theTree.root);
+		
+
+	}
+
+}
+
+class Node {
+	
+	int key;
+	String name;
+	
+	Node leftChild;
+	Node rightChild;
+	
+	Node(int key, String name){
+		this.key = key;
+		
+		this.name = name;
+	}
+	
+	public String toString() {
+		return name + " has a key " + key;
+		
+	}
+}
+
+
+
+
+Office Manager has a key 15 <--------------- in order traversal
+VP has a key 25
+Secretary has a key 30
+Boss has a key 50
+Sales Manager has a key 75
+Salesman 1 has a key 85
+
+
+							Preorder Traversal
+
+starts with main focus node, root 1st
+cycle left children
+jump up 1 parent, then right child
+then back to root and then go down children
+
+
+                 50                 50 -> 25 then 25 -> 15 then 25 -> 30 then 50 -> 75 then 75-> 85
+                /  \                                                        
+              25     75                         
+              / \     \                                                                  
+             15  30   85                                                          
+                                                    
+
+ public void preOrderTraverseTree(Node focusNode) {
+		
+		if(focusNode != null) {
+			
+			System.out.println(focusNode); <----------------------------- 1
+			
+			preOrderTraverseTree(focusNode.leftChild); <----------------- 2
+			
+			preOrderTraverseTree(focusNode.rightChild); <---------------- 3
+			
+		}
+}	                                                
+                                                          
+
+Boss has a key 50<----------------------preorder traversal
+VP has a key 25
+Office Manager has a key 15
+Secretary has a key 30
+Sales Manager has a key 75
+Salesman 1 has a key 85    
+
+
+						postOrder traversal 
+
+              50                                   15 -> 30 then 30 -> 25 then 85 ->  75 then 75 -> 50                           
+              /  \                                              
+             25   75                                                                                    
+            /   \   \                                                                                                        
+           15    30  85                                                                                   
+                                                              
+                                                 
+ public void poseOrderTraverseTree(Node focusNode) {
+	
+	if(focusNode != null) {
+		
+		poseOrderTraverseTree(focusNode.leftChild); <-----------------1
+		
+		poseOrderTraverseTree(focusNode.rightChild); <----------------2
+		
+		System.out.println(focusNode);<-------------------------------3
+		
+	}
+}                                         
+
+Office Manager has a key 15 <----------------postorder traversal
+Secretary has a key 30
+VP has a key 25
+Salesman 1 has a key 85
+Sales Manager has a key 75
+Boss has a key 50
+
+
+
+
+							FINDING NODES
+
+	public Node findNode(int key) {
+		
+		Node focusNode = root;
+		
+		while(focusNode.key != key) {
+			
+			if (key < focusNode.key) {
+				
+				focusNode = focusNode.leftChild;
+				
+			} else {
+				
+				focusNode = focusNode.rightChild;
+				
+			}
+			
+			if(focusNode == null);
+				return null;
+		}
+		
+		return focusNode;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,355 @@
+					ArrayList  quick example: 
+
+List<String> listStrings = new ArrayList<String>();
+listStrings.add("One");
+listStrings.add("Two");
+listStrings.add("Three");
+listStrings.add("Four");
+System.out.println(listStrings);
+ 
+					LinkedList  quick example: 
+
+List<String> listStrings = new LinkedList<String>();
+listStrings.add("Five");
+listStrings.add("Six");
+listStrings.add("Seven");
+listStrings.add("Eight");
+System.out.println(listStrings);
+ 
+The code examples in this tutorial revolve on the two common implementations: ArrayList and LinkedList.
+
+
+					2. Creating a new list
+
+
+It’s a good practice to declare a list instance with a generic type parameter, for example:
+
+List<Object> listAnything = new ArrayList<Object>();
+List<String> listWords = new ArrayList<String>();
+List<Integer> listNumbers = new ArrayList<Integer>();
+List<String> linkedWords = new LinkedList<String>();
+Since Java 7, we can remove the type parameter on the right side as follows:
+
+List<Integer> listNumbers = new ArrayList<>();
+List<String> linkedWords = new LinkedList<>();
+The compiler is able to infer the actual type parameter from the declaration on the left side.
+Since Java 9, you can create a List collection from a fixed set of elements by using the factory method List.of(e1, e2, e3…). For example:
+
+List<Integer> listNumbers = List.of(1, 2, 3, 4, 5, 6);
+Note that the List collection returned by the List.of() factory method is immutable - meaning that you can’t add more elements to it.
+Since Java 10, you can shorten the declaration of a List collection by using the var reserved word like this:
+
+var employees = new ArrayList<Employee>();
+The compiler can infer the type of the variable on the left based on the object type on the right side. And var can be used to declare local variables only.
+ 
+When creating a new ArrayList using the empty constructor, the list is constructed with an initial capacity of ten. If you are sure how many elements will be added to the list, it’s recommended to specify a capacity which is large enough. Let’s say, if we know that a list contains around 1000 elements, declare the list as follows:
+
+List<Integer> listNumbers = new ArrayList<>(1000);
+It’s also possible to construct a list that takes elements from an existing collection, for example:
+
+List<Integer> listNumberOne;  // existing collection
+List<Integer> listNumberTwo = new ArrayList<>(listNumberOne);
+The listNumberTwo constructed with copies of all elements from the listNumberOne.
+ 
+					
+					3. Basic operations: adding, retrieving, updating, removing elements
+
+
+Adding elements
+The methods add(Object), add(index, Object) and addAll() are used to add elements to the list. It requires to add elements of the same type (or sub type) as the type parameter declared by the list. For example:
+
+List<String> listStrings = new ArrayList<String>();
+// OK to add Strings:
+listStrings.add("One");
+listStrings.add("Two");
+listStrings.add("Three");
+// But this will cause compile error
+listStrings.add(123);
+Adding elements of sub types of the declared type:
+
+List<Number> linkedNumbers = new LinkedList<>();
+linkedNumbers.add(new Integer(123));
+linkedNumbers.add(new Float(3.1415));
+linkedNumbers.add(new Double(299.988));
+linkedNumbers.add(new Long(67000));
+We can insert an element into the list at a specified index, for example:
+
+listStrings.add(1, "Four");
+That inserts the String “Four” at the 2nd position in the list.
+We can also add all elements of an existing collection to the end of the list:
+
+listStrings.addAll(listWords);
+Or add the elements to the list at a specified position:
+
+listStrings.addAll(2, listWords);
+That inserts all elements of the listWordscollection at 3rd position of the listStrings collection.
+ 
+Retrieving elements
+The get() method is used to retrieve an element from the list at a specified index. For example, the following code gets an element at 2nd position in the array list and an element at 4th position in the linked list:
+
+String element = listStrings.get(1);
+Number number = linkedNumbers.get(3);
+For a LinkedListimplementation, we can get the first and the last elements like this:
+
+LinkedList<Number> numbers = new LinkedList<Number>();
+// add elements to the list...
+// get the first and the last elements:
+Number first = numbers.getFirst();
+Number last = numbers.getLast();
+Note that the getFirst() and getLast() methods are specific to the LinkedListclass.
+ 
+Updating elements
+Use the set(index, element) method to replace the element at the specified index by the specified element. For example:
+
+listStrings.set(2, "Hi");
+That replaces the 3rd element in the list by the new String “Hi”.
+ 
+Removing elements
+To remove an element from the list, use the remove(index) or remove(Object) method which removes the element at the specified index or by object reference. For example:
+Remove the element at the 3rd position in the list: 
+
+listStrings.remove(2);
+If the specified index is out of range (index < 0 or index >= list size), a java.lang.IndexOutOfBoundsException is thrown.
+Remove the String element “Two” in the list: 
+
+listStrings.remove("Two");
+Notes about the remove(Object) method:
+It compares the specified object with the elements in the list using their equals() method, so if you use your own defined object type, make sure it implements the equals() method correctly.
+It only removes the first occurrence of the specified element in the list (i.e. if a list contains duplicate elements, only the first element is removed).
+It returns true if the list contained the specified element, or falseotherwise. Thus it’s recommended to check return value of this method, for example: 
+
+if (listStrings.remove("Ten")) {
+    System.out.println("Removed");
+} else {
+    System.out.println("There is no such element");
+}
+ 
+To remove all elements in the list, use the clear() method:
+
+listStrings.clear();
+
+
+					4. Iterating over a list
+
+
+
+Basically, we can use the enhanced for loop to iterate through all elements in the list, as follows:
+
+for (String element : listStrings) {
+    System.out.println(element);
+}
+Or use an iterator like this:
+
+Iterator<String> iterator = listStrings.iterator();
+while (iterator.hasNext()) {
+    System.out.println(iterator.next());
+}
+For more list-specific, use a list iterator as shown below:
+
+Iterator<Number> iterator = linkedNumbers.listIterator();
+while (iterator.hasNext()) {
+    System.out.println(iterator.next());
+}
+Since Java 8, we can use the forEach()method like this:
+ 
+
+listStrings.forEach(s -> System.out.println(s));
+ 
+For more details and examples, see the tutorial: Java Collections Looping Example
+For more about the forEach iteration method, see the tutorial: The 4 Methods for Iterating Collections in Java
+
+
+
+					5. Searching for an element in a list
+
+
+
+To search for position of a specific element in the list or to know if the list contains the specified element, the following methods can be used:
+boolean contains(Object): returns trueif the list contains the specified element.
+int indexOf(Object): returns the index of the first occurrence of the specified element in the list, or -1 if the element is not found.
+int lastIndexOf(Object): returns the index of the last occurrence of the specified element in the list, or -1 if the element is not found.
+Examples:
+
+if (listStrings.contains("Hello")) {
+    System.out.println("Found the element");
+} else {
+    System.out.println("There is no such element");
+}
+int firstIndex = linkedNumbers.indexOf(1234);
+int lastIndex = listStrings.indexOf("Hello");
+Note that the above methods compare the elements using their equals() method, so if you define your own type, make sure it implements the equals() method correctly.
+
+
+ 
+					6. Sorting a list
+
+
+Before Java 8, the simplest way to sort out elements in a list is using the Collections.sort() static method which sorts the specified list into ascending order, based on the natural ordering of its elements. Here’s an example:
+
+List<String> listStrings = new ArrayList<String>();
+listStrings.add("D");
+listStrings.add("C");
+listStrings.add("E");
+listStrings.add("A");
+listStrings.add("B");
+System.out.println("listStrings before sorting: " + listStrings);
+Collections.sort(listStrings);
+System.out.println("listStrings after sorting: " + listStrings);
+Output:
+
+listStrings before sorting: [D, C, E, A, B]
+listStrings after sorting: [A, B, C, D, E]
+Note that all elements in the list must implement the Comparableinterface, so if you define your own type, make sure it implements that interface and its compareTo() method.
+Since Java 8, the List interface introduces the sort() method, so you can sort elements in an ArrayList or LinnkedList directly like this:
+1
+listStrings.sort(null); // sort by natural ordering of the elements
+For more details and examples, see the article: Sorting List Collections Examples
+
+
+
+					7. Copying one list into another
+
+
+
+The Collections.copyList(dest, src) static method allows us to copy all elements from the source list into the destination one. Note that the destination list must be large enough to contain the entire source list. Here’s an example:
+
+List<String> sourceList = new ArrayList<String>();
+sourceList.add("A");
+sourceList.add("B");
+sourceList.add("C");
+sourceList.add("D");
+List<String> destList = new ArrayList<String>();
+destList.add("V");
+destList.add("W");
+destList.add("X");
+destList.add("Y");
+destList.add("Z");
+System.out.println("destList before copy: " + destList);
+Collections.copy(destList, sourceList);
+System.out.println("destList after copy: " + destList);
+The output would be:
+
+destList before copy: [V, W, X, Y, Z]
+destList after copy: [A, B, C, D, Z]
+
+
+
+					8. Shuffling elements in a list
+
+
+
+
+To randomly permute elements in a list, use the Collections.shuffle() static method. Here’s a quick example:
+
+List<Integer> numbers = new ArrayList<Integer>();
+for (int i = 0; i <= 10; i++) numbers.add(i);
+System.out.println("List before shuffling: " + numbers);
+Collections.shuffle(numbers);
+System.out.println("List after shuffling: " + numbers);
+The output would be:
+
+List before shuffling: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+List after shuffling: [6, 4, 5, 0, 1, 3, 9, 7, 2, 10, 8]
+ 
+.
+
+
+
+					9. Reversing elements in a list
+
+
+
+
+To reverse order of elements in a list, use the Collections.reverse() static method. Here’s a quick example:
+
+List<Integer> numbers = new ArrayList<Integer>();
+for (int i = 0; i <= 10; i++) numbers.add(i);
+System.out.println("List before reversing: " + numbers);
+Collections.reverse(numbers);
+System.out.println("List after reversing: " + numbers);
+The output would be:
+
+List before reversing: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+List after reversing: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+
+ 
+					10. Extracting a portion of a list
+
+
+
+The subList(fromIndex, toIndex) allows us to get a portion of the list between the specified fromIndex(inclusive) and toIndex(exclusive). Here’s an example:
+
+List<String> listNames = Arrays.asList("Tom", "John", "Mary", "Peter", "David", "Alice");
+System.out.println("Original list: " + listNames);
+List<String> subList = listNames.subList(2, 5);
+System.out.println("Sub list: " + subList);
+Output:
+
+Original list: [Tom, John, Mary, Peter, David, Alice]
+Sub list: [Mary, Peter, David]
+Note that the sub list is just a view of the original list, so any modifications made on the original list will reflect in the sub list.
+ 
+
+
+					11. Converting between Lists and arrays
+
+
+
+
+
+The Java Collection Framework allows us to easily convert between lists and arrays.
+The Arrays.asList(T… a) method converts an array of type T to a list of type T. Here’s an example:
+
+List<String> listNames = Arrays.asList("John", "Peter", "Tom", "Mary", "David", "Sam");
+List<Integer> listNumbers = Arrays.asList(1, 3, 5, 7, 9, 2, 4, 6, 8);
+System.out.println(listNames);
+System.out.println(listNumbers);
+Output:
+
+[John, Peter, Tom, Mary, David, Sam]
+[1, 3, 5, 7, 9, 2, 4, 6, 8]
+And the Listinterface provides the toArray() method that returns an array of Objects containing all of the elements in the list in proper sequence (from first to last element). Here’s an example:
+
+List<String> listWords = new ArrayList<String>();
+// add elements to the list
+Object[] arrayWords = listWords.toArray();
+And the toArray(T[] a) method returns an array of type T, for example:
+
+String[] words = listWords.toArray(new String[0]);
+Integer[] numbers = listNumbers.toArray(new Integer[0]);
+Note that the returned array contains copies of elements in the list, which that means we can safely modify the array without affecting the list.
+
+
+ 
+					12. List to Stream
+
+
+
+
+From Java 8, you can convert a List to a stream to take advantages of the Streams API:
+                List.stream(): returns a sequential stream.
+                List.parallelStream(): returns a possibly parallel stream.
+For example, the following code converts a List numbers to a stream and uses the Stream API to calculate the sum of all numbers:
+
+int sum = numbers.stream().reduce(0, (x, y) -> x + y);
+For more information about Java stream, read Understanding Java 8 Stream API.
+
+
+
+					13. Concurrent lists
+
+
+
+By default, ArrayListand LinkedList are not thread-safe, so if you want to use them in concurrent context, you have to synchronize them externally using the Collections.synchronizedList() static method which returns a synchronized list that wraps the specified list. For example:
+
+List<Object> unsafeList = new ArrayList<Object>();
+List<Object> safeList = Collections.synchronizedList(unsafeList);
+Note that you must manually synchronize the returned list when iterating over it, for example:
+
+synchronized (safeList) {
+    Iterator<Object> it = safeList.iterator();
+    while (it.hasNext()) {
+        System.out.println(it.next());
+    }
+}

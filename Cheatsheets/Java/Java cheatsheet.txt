@@ -1,0 +1,3099 @@
+package com.newthinktank;
+
+// Dialog used for user input
+import javax.swing.JOptionPane;
+
+// Right click project New -> Package
+// Right click Package -> New Class
+// Run -> Java Application -> HelloWorld
+
+// Public class other classes can access
+// Classes are blueprints for modeling real
+// world objects or systems
+// The code between { } belongs to the class
+
+/*
+ * Multiline Comment
+ */
+
+// Used to get user input
+// Array functions
+// ArrayLists
+// Iterators
+// Used to get collection types (Lists)
+import java.util.*;
+
+// Used to generate ranges
+import java.util.stream.IntStream;
+
+
+public class HelloWorld {
+
+	// static means that this object belongs
+	// to the class (More Later)
+	// A scanner object receives input and
+	// by using System.in you are reading
+	// from the keyboard
+	static Scanner sc = new Scanner(System.in);
+
+	// This is a constant thats value can't change
+	final double SHORTPI = 3.14159;
+
+	// ---- ENUMERATED TYPES ----
+	// Custom type with limited number of options
+	// Must be declared at top of class
+	public enum Day {Monday,Tuesday,Wednesday};
+
+	// ---- METHODS ----
+	// Methods avoid duplicate code and
+	// and help organize
+	// public methods : Executed by any program
+	// that knows of your class
+	// private methods : Available only to your class
+	// protected methods : Available to your class
+	// and subclasses (More Later)
+
+	// Receive to ints and return an int
+	// static means we don't have to create an
+	// object to use this
+	// return type methodName(parameters w/ types)
+	public static int getSum(int x, int y) {
+		return x + y;
+	}
+
+	// Demonstrate pass by value
+	public static void changeMe(int cNum) {
+		cNum = 10;
+	}
+
+	// Receive a variable number of parameters
+	public static int getSum2(int ... nums) {
+		int sum = 0;
+		for(int x: nums) {
+			sum += x;
+		}
+		return sum;
+	}
+
+	// Return an array with multiple values
+	static int[] getNext2(int x) {
+		int[] vals = new int[2];
+		vals[0] = x + 1;
+		vals[1] = x + 2;
+		return vals;
+	}
+
+	// Return a list of different types
+	static List<Object> getRandList(){
+		String name = "Derek";
+		int age = 44;
+		return Arrays.asList(name, age);
+	}
+
+	// Recursive functions call themselves
+	static int factorial(int num) {
+		// Must have a condition were we don't
+		// call for the function to execute
+		if(num == 1) {
+			return 1;
+		} else {
+			int result = num * factorial(num - 1);
+			return result;
+		}
+	}
+
+	static int getSum3(int[] nums) {
+		int sum = 0;
+		for(int x: nums) sum += x;
+		return sum;
+	}
+
+	// 1st : result = 4 * factorial(3) = 4 * 6 = 24
+	// 2nd : result = 3 * factorial(2) = 3 * 2 = 6
+	// 3rd : result = 2 * factorial(1) = 2 * 1 = 2
+
+	// ---- MAIN FUNCTION ----
+
+	// Code in main is where execution begins
+	// static means this is a class function
+	// versus an object function (More later)
+	// void states that this code does not return
+	// a value during execution
+	// Any data passed to your program from the
+	// terminal or command line is stored in args
+	public static void main(String[] args) {
+
+		// println is a method (function) that
+		// prints the provided string to the
+		// console
+		// All statements end with a ;
+		// Java is case sensitive
+		// print does the same without a newline
+		System.out.println("Hello World");
+
+		// ---- VARIABLES ----
+		// Must start with a letter and then
+		// letters, numbers, _ or $
+
+		// Create a variable for holding whole numbers
+		int var1 = 100;
+
+		// Create multiple variables
+		int v2, v3;
+
+		// ---- DATA TYPES ----
+		// Java requires every variable to have
+		// a defined data type
+		// Primitive Types
+		// byte, short, char, boolean, int, float,
+		// double, and long
+
+		// Wrapper classes make primitive types
+		// act like objects
+		System.out.println("Byte Max: " +
+				Byte.MAX_VALUE);
+		System.out.println("Byte Min: " +
+				Byte.MIN_VALUE);
+		System.out.println("Short Max: " +
+				Short.MAX_VALUE);
+		System.out.println("Short Min: " +
+				Short.MIN_VALUE);
+		System.out.println("Char Max: " +
+				(Character.MAX_VALUE+0));
+		System.out.println("Char Min: " +
+				(Character.MIN_VALUE+0));
+		System.out.println("Int Max: " +
+				Integer.MAX_VALUE);
+		System.out.println("Int Min: " +
+				Integer.MIN_VALUE);
+		System.out.println("Float Max: " +
+				Float.MAX_VALUE);
+		System.out.println("Float Min: " +
+				Float.MIN_VALUE);
+		System.out.println("Double Max: " +
+				Double.MAX_VALUE);
+		System.out.println("Double Min: " +
+				Double.MIN_VALUE);
+		System.out.println("Long Max: " +
+				Long.MAX_VALUE);
+		System.out.println("Long Min: " +
+				Long.MIN_VALUE);
+
+		// Booleans are either true or false
+		// You can't use 0 or anything else
+		boolean happy = true;
+
+		// Characters can only store single
+		// characters (must use ')
+		char a = 'a';
+
+		// You can also store escaped characters
+		// \n, \t, \b, \f, \r, \", \', \\
+
+		// Floating point precision 6 decimals
+		float fNum = 1.1111111111111111F;
+		float fNum2 = 1.1111111111111111F;
+		System.out.println("Float : " +
+				(fNum + fNum2));
+
+		// Double precision 15 decimals
+		double dblNum = 1.1111111111111111;
+		double dblNum2 = 1.1111111111111111;
+		System.out.println("Float : " +
+				(dblNum + dblNum2));
+
+		// Can use scientific notation
+		double thousand = 1e+3;
+		System.out.println(thousand);
+
+		// You can define longs with _
+		long bigNum = 123_456_789;
+
+		// ---- CASTING ----
+		// You can convert from smaller types
+		// to larger types automatically
+		int smInt = 10;
+		long smLong = smInt;
+
+		// Use (newType) otherwise
+		double cDbl = 1.234;
+		int cInt = (int) cDbl;
+		System.out.println(cInt);
+
+		long bigLong = 21474836470L;
+		int bInt = (int) bigLong;
+		System.out.println(bInt);
+
+		// Use wrapper class to convert to string
+		String favNum = Double.toString(1.618);
+
+		// Convert Strings to primitives with
+		// Byte.parseByte, Boolean.parseBoolean,
+		// and the same format for each type
+		// except for chars
+		int strInt = Integer.parseInt("10");
+
+		// ---- MATH ----
+		System.out.println("5 + 4 = "+(5+4));
+		System.out.println("5 - 4 = "+(5-4));
+		System.out.println("5 * 4 = "+(5*4));
+		System.out.println("5 / 4 = "+(5/4));
+		System.out.println("5 % 4 = "+(5%4));
+
+		// Math done on integers default to
+		// integer output and doubles return doubles
+		System.out.println("5 / 4 = "+(5.0/4.0));
+
+		// incMe++ same as incMe = incMe + 1
+		// Can also decrement with --
+		int incMe = 0;
+		System.out.println("incMe: "+(incMe++));
+		System.out.println("incMe: "+(++incMe));
+
+		// incMe = incMe + 10 == incMe += 10
+		// Same with -= *= /= %=
+		incMe += 10;
+
+		// Numerous math functions
+		System.out.println("abs(-1) = "+Math.abs(-1));
+		System.out.println("ceil(4.25) = "+Math.ceil(4.25));
+		System.out.println("floor(4.25) = "+Math.floor(4.25));
+		System.out.println("round(4.25) = "+Math.round(4.25));
+		System.out.println("max(4,5) = "+Math.max(4,5));
+		System.out.println("min(4,5) = "+Math.min(4,5));
+		System.out.println("exp(1) = "+Math.exp(1));
+		System.out.println("log(1) = "+Math.log(1));
+		System.out.println("log10(1) = "+Math.log10(1));
+		System.out.println("pow(2,2) = "+Math.pow(2,2));
+		System.out.println("sqrt(4) = "+Math.sqrt(4));
+		System.out.println("cbrt(4) = "+Math.cbrt(4));
+		System.out.println("hypot(5,5) = "+Math.hypot(5,5));
+		System.out.println("PI = "+Math.PI);
+
+		// Trig Functions Radians
+		System.out.println("sin(1.5708) = "+Math.sin(1.5708));
+		System.out.println("cos(1.5708) = "+Math.cos(1.5708));
+		System.out.println("tan(1.5708) = "+Math.tan(1.5708));
+		System.out.println("asin(1.5708) = "+Math.asin(1.5708));
+		System.out.println("acos(1.5708) = "+Math.acos(1.5708));
+		System.out.println("atan(1.5708) = "+Math.atan(1.5708));
+		System.out.println("sinh(1.5708) = "+Math.sinh(1.5708));
+		System.out.println("cosh(1.5708) = "+Math.cosh(1.5708));
+		System.out.println("tanh(1.5708) = "+Math.tanh(1.5708));
+		System.out.println("toDegrees(1.5708) = "+Math.toDegrees(1.5708));
+		System.out.println("toRadians(90) = "+Math.toRadians(90));
+
+		// Random number between 5 and 20
+		int minNum = 5;
+		int maxNum = 20;
+		int randNum = minNum + (int)(Math.random() *
+				((maxNum - minNum) + 1));
+		System.out.println("Rand : "+randNum);
+
+		// ---- STRINGS ----
+		// Strings are objects (Reference Type)
+		// They have built in methods and must
+		// be surrounded with "
+		String name = "Derek";
+
+		// Combine strings with +
+		// or +=
+		String wName = name + " Banas";
+		wName += " is my name";
+
+		// Conversion is automatic when using
+		// primitives
+		String drsDog = "K" + 9;
+
+		// Get character at index
+		System.out.println(wName.charAt(0));
+
+		// Does it contain a Derek
+		// startsWith, endsWith
+		System.out.println(wName.contains("Derek"));
+
+		// Get index of match
+		System.out.println((wName.indexOf("Derek")));
+
+		// Number of characters
+		System.out.println(wName.length());
+
+		// Don't use == to compare strings use equals
+		// == would check if they point to the same
+		// memory location
+		// .equalsIgnoreCase ignores case
+		String str1 = "dog";
+		System.out.println("dog equals cat : " +
+		(str1.equals("cat")));
+
+		// Compare strings 0 if same, -1 if string
+		// comes before other or 1
+		// compareToIgnoreCase
+		System.out.println(wName.compareTo("ABC"));
+
+		// Replace matches
+		// replaceFirst
+		System.out.println(wName.replace("Derek", "Bob"));
+
+		// Get string at indexes
+		System.out.println(wName.substring(0,5));
+
+		// Turn string into array
+		// Shortcut for printing array (Enhanced For)
+		// toCharArray
+		for(String x: wName.split(" ")) System.out.println(x);
+
+		// trim : Deletes whitespace at beginning and end
+		// toUpperCase, toLowerCase
+
+		// ---- STRING BUILDER & BUFFER ----
+		// If you have to make many string changes
+		// a StringBuilder may be better
+		// Use a StringBuffer if using threads
+
+		// Create StringBuilder
+		StringBuilder sb = new StringBuilder("I'm a string builder");
+
+		// Number of characters
+		System.out.println(sb.length());
+
+		// Get size set aside
+		// Increase size with ensureCapacity
+		System.out.println(sb.capacity());
+
+		// Append a primitive or string
+		sb.append(" Yeah");
+
+		// Insert at index
+		System.out.println(sb.insert(6, "Big "));
+
+		// Replace at indexes
+		System.out.println(sb.replace(6, 9, "wig"));
+
+		// Extract substring
+		System.out.println(sb.substring(6,10));
+
+		// Delete characters at indexes
+		System.out.println(sb.delete(6, 10));
+
+		// Get char at index
+		System.out.println(sb.charAt((4)));
+
+		// Get index for string
+		System.out.println(sb.indexOf("Yeah"));
+
+		// ---- ARRAYS ----
+		// Arrays are boxes in memory that hold
+		// multiple values
+
+		// Create an array that can hold 10 values
+		int[] a1 = new int[10];
+
+		// Assign a value to the first index (address)
+		a1[0] = 1;
+
+		// Fill array with a value
+		Arrays.fill(a1,2);
+
+		// Get value
+		System.out.println(a1[0]);
+
+		// Get size
+		System.out.println(a1.length);
+
+		// Create and add values at the same time
+		String[] a2 = {"one","two"};
+
+		// Generate an array from 1 to 10 (More Later)
+		int[] oneTo10 = IntStream.rangeClosed(1, 10).toArray();
+
+		// The enhanced for loop
+		for(int x: oneTo10) System.out.println(x);
+
+		// Find value
+		System.out.println(Arrays.binarySearch(oneTo10, 9));
+
+		// Multidimensional array
+		int a3[][] = new int[2][2];
+
+		// Create and initialize
+		// a4[How many down][How many across]
+		String[][] a4 = {{"00", "10"},
+				{"01", "11"}};
+
+		System.out.println(a4[1][1]);
+
+		// a5[How many down][How many across][How many Groups]
+		// a5[3][4][1]
+		String a5[][][] = {{{"000"}, {"100"}, {"200"}, {"300"}},
+				{{"010"}, {"110"}, {"210"}, {"310"}},
+				{{"020"}, {"120"}, {"220"}, {"320"}}};
+		System.out.println(a5[2][3][0]);
+
+		// Copy array into another
+		int a6[] = {1,2,3};
+		int a7[] = Arrays.copyOf(a6, 3);
+
+		// Compare arrays
+		System.out.println(Arrays.equals(a6, a7));
+
+		// Sort array
+		int a8[] = {3,2,1};
+		Arrays.sort(a8);
+		System.out.println(Arrays.toString(a8));
+
+		// ---- ARRAYLIST ----
+		// ArrayLists resize and provide for easy
+		// insertion and deletion
+		// Create a String ArrayList with 20 spaces
+		ArrayList<String> aL1 = new ArrayList<String>(20);
+
+		// Add value
+		aL1.add("Sue");
+
+		// Generate an ArrayList
+		ArrayList<Integer> aL2 = new ArrayList<>(Arrays.asList(1,2,3,4));
+		for(Integer x: aL2) System.out.println(x);
+
+		// Get a value
+		System.out.println(aL2.get(1));
+
+		// Add a value at index
+		aL2.set(1, 5);
+
+		// Delete value (Delete all aL2.clear())
+		aL2.remove(3);
+
+		// Iterators are used to cycles through
+		// collections like ArrayLists
+		Iterator it = aL2.iterator();
+
+		// Loop while more values exist
+		while(it.hasNext()) {
+			// Output each value
+			System.out.println(it.next());
+		}
+
+		// ---- LINKEDLIST ----
+		// Best when you have to make changes
+		// in the middle of the list
+		// Each link has a reference to the value
+		// before and the value after
+		LinkedList<Integer> lL1 = new LinkedList<Integer>();
+
+		// Add value
+		lL1.add(1); lL1.add(2); lL1.add(3);
+
+		// Add array to list
+		lL1.addAll(Arrays.asList(1,2,3,4));
+
+		// Add to front (addLast Also)
+		lL1.addFirst(0);
+
+		// Check if in list
+		System.out.println(lL1.contains(4));
+
+		// Get index for match
+		System.out.println(lL1.indexOf(4));
+
+		// Replace
+		lL1.set(0, 2);
+
+		// Get value
+		// Also getFirst, getLast
+		System.out.println(lL1.get(0));
+
+		// Delete (clear() removes all)
+		lL1.remove(1);
+
+		// Get size
+		System.out.println(lL1.size());
+
+		// Convert to array
+		Object[] a9 = lL1.toArray();
+
+		// ---- USER INPUT ----
+		// The Scanner object receives user input
+		// using nextShort, nextByte, nextBoolean,
+		// nextInt, nextFloat, nextDouble,
+		// nextLong, nextLine
+		System.out.print("Enter name: ");
+
+		// Did the user enter a string
+		// Use hasNextDataType to check if a
+		// valid type was entered
+		if(sc.hasNextLine()){
+			String userName = sc.nextLine();
+			System.out.println("Hello "+userName);
+		}
+
+		// Get input using a dialog box
+		String jopName =
+				JOptionPane.showInputDialog("Enter Name");
+		System.out.println("Hello "+jopName);
+
+		// ---- CONDITIONALS ----
+		// Relational Operators : == != > < >= <=
+		// Logical Operators : ! && ||
+		int age = 12;
+		if ((age >= 5) && (age <= 6)){
+			System.out.println("Go to Kindergarten");
+		} else if ((age >= 7) && (age <= 13)){
+			System.out.println("Go to Middle School");
+		} else if ((age >= 14) && (age <= 18)){
+			System.out.println("Go to High School");
+		} else {
+			System.out.println("Stay Home");
+		}
+
+		System.out.println("true || false = "+(true || false));
+		System.out.println("!true = "+(!true));
+
+		// The ternary operator returns the 1st value
+		// when the condition is true and the 2nd
+		// otherwise
+		boolean canVote = (age >= 18) ? true : false;
+		System.out.println("Can Vote : "+canVote);
+
+		// Switch is used when you have limited options
+		String lang = "France";
+		switch(lang) {
+		case "Chile": case "Cuba":
+			System.out.println("Hola");
+
+			// Without break the next condition
+			// is checked
+			break;
+		case "France":
+			System.out.println("Bonjour");
+			break;
+		case "Japan":
+			System.out.println("Konnichiwa");
+			break;
+		default:
+			System.out.println("Hello");
+		}
+
+		// ---- LOOPING ----
+		for(int i = 0; i < 5; i++) {
+			System.out.println(i);
+		}
+
+		// while loops as long as a condition is true
+		int wI = 0;
+		while (wI < 20) {
+
+			// Only print even numbers
+			if(wI % 2 == 0) {
+				System.out.println(wI);
+				wI++;
+				// Jump back to the beginning of loop
+				continue;
+			}
+			if(wI >= 10) {
+				// Stop looping
+				break;
+			}
+			wI++;
+		}
+
+		// Do whiles execute at least once
+		int secretNum = 7;
+		int guess = 0;
+		do {
+			System.out.println("Guess : ");
+			if(sc.hasNextInt()){
+				guess = sc.nextInt();
+			}
+		}while(secretNum != guess);
+		System.out.println("You guessed it");
+
+		// ---- METHODS ----
+		System.out.println("5 + 4 = " + getSum(5,4));
+
+		// All data passed to a function is pass by
+		// value so changes in the method have no
+		// effect outside of the function
+		int cNum = 0;
+		changeMe(cNum);
+		System.out.println("cNum = " + cNum);
+
+		// You can pass a variable number of values
+		// to a method
+		System.out.println("1+2+3 = " + getSum2(1,2,3));
+
+		// You can receive multiple values with an array
+		int[] multVA = getNext2(5);
+		// 1 line for loop
+		for(int x: multVA) System.out.println(x);
+
+		// Receive multiple values of different types
+		List<Object> randList = getRandList();
+		System.out.println(randList);
+
+		// Demonstrate recursion (functions calling
+		// themselves)
+		System.out.println("Fact 4 = " + factorial(4));
+
+		// Pass array to method
+		int[] nums = {1,2,3};
+		System.out.println("Sum = " + getSum3(nums));
+
+		// ---- EXCEPTION HANDLING ----
+		// Used to catch errors that could crash
+		// our program
+
+		// Surround problem code with a try block
+		try {
+			// int badInt = 10 / 0;
+
+			// You can create your own exception
+			// classes or just throw one without
+			throw new Exception("Bad Stuff");
+		}
+		// Catch division by 0
+		catch(ArithmeticException ex) {
+			System.out.println("Can't divide by zero");
+			System.out.println(ex.getMessage());
+			System.out.println(ex.toString());
+		}
+		// Catch any exception
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		// Executed whether exception occurred or not
+		// Used to close files, DBs and other clean up
+		finally {
+			System.out.println("Clean Up");
+		}
+
+		// ---- ENUMERATED TYPES ----
+		Day favDay = Day.Monday;
+		System.out.println("Fav day is "+favDay);
+
+	}
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+package com.newthinktank;
+ 
+// Dialog used for user input
+import javax.swing.JOptionPane;
+ 
+// Right click project New -> Package
+// Right click Package -> New Class
+// Run -> Java Application -> HelloWorld
+ 
+// Public class other classes can access
+// Classes are blueprints for modeling real
+// world objects or systems
+// The code between { } belongs to the class
+ 
+/*
+ * Multiline Comment
+ */
+ 
+// Used to get user input
+// Array functions
+// ArrayLists
+// Iterators
+// Used to get collection types (Lists)
+import java.util.*;
+ 
+// Used to generate ranges
+import java.util.stream.IntStream;
+ 
+ 
+public class HelloWorld {
+ 
+	// static means that this object belongs
+	// to the class (More Later)
+	// A scanner object receives input and
+	// by using System.in you are reading
+	// from the keyboard
+	static Scanner sc = new Scanner(System.in);
+ 
+	// This is a constant thats value can't change
+	final double SHORTPI = 3.14159;
+ 
+	// ---- ENUMERATED TYPES ----
+	// Custom type with limited number of options
+	// Must be declared at top of class
+	public enum Day {Monday,Tuesday,Wednesday};
+ 
+	// ---- METHODS ----
+	// Methods avoid duplicate code and
+	// and help organize
+	// public methods : Executed by any program
+	// that knows of your class
+	// private methods : Available only to your class
+	// protected methods : Available to your class
+	// and subclasses (More Later)
+ 
+	// Receive to ints and return an int
+	// static means we don't have to create an
+	// object to use this
+	// return type methodName(parameters w/ types)
+	public static int getSum(int x, int y) {
+		return x + y;
+	}
+ 
+	// Demonstrate pass by value
+	public static void changeMe(int cNum) {
+		cNum = 10;
+	}
+ 
+	// Receive a variable number of parameters
+	public static int getSum2(int ... nums) {
+		int sum = 0;
+		for(int x: nums) {
+			sum += x;
+		}
+		return sum;
+	}
+ 
+	// Return an array with multiple values
+	static int[] getNext2(int x) {
+		int[] vals = new int[2];
+		vals[0] = x + 1;
+		vals[1] = x + 2;
+		return vals;
+	}
+ 
+	// Return a list of different types
+	static List<Object> getRandList(){
+		String name = "Derek";
+		int age = 44;
+		return Arrays.asList(name, age);
+	}
+ 
+	// Recursive functions call themselves
+	static int factorial(int num) {
+		// Must have a condition were we don't
+		// call for the function to execute
+		if(num == 1) {
+			return 1;
+		} else {
+			int result = num * factorial(num - 1);
+			return result;
+		}
+	}
+ 
+	static int getSum3(int[] nums) {
+		int sum = 0;
+		for(int x: nums) sum += x;
+		return sum;
+	}
+ 
+	// 1st : result = 4 * factorial(3) = 4 * 6 = 24
+	// 2nd : result = 3 * factorial(2) = 3 * 2 = 6
+	// 3rd : result = 2 * factorial(1) = 2 * 1 = 2
+ 
+	// ---- MAIN FUNCTION ----
+ 
+	// Code in main is where execution begins
+	// static means this is a class function
+	// versus an object function (More later)
+	// void states that this code does not return
+	// a value during execution
+	// Any data passed to your program from the
+	// terminal or command line is stored in args
+	public static void main(String[] args) {
+ 
+		// println is a method (function) that
+		// prints the provided string to the
+		// console
+		// All statements end with a ;
+		// Java is case sensitive
+		// print does the same without a newline
+		System.out.println("Hello World");
+ 
+		// ---- VARIABLES ----
+		// Must start with a letter and then
+		// letters, numbers, _ or $
+ 
+		// Create a variable for holding whole numbers
+		int var1 = 100;
+ 
+		// Create multiple variables
+		int v2, v3;
+ 
+		// ---- DATA TYPES ----
+		// Java requires every variable to have
+		// a defined data type
+		// Primitive Types
+		// byte, short, char, boolean, int, float,
+		// double, and long
+ 
+		// Wrapper classes make primitive types
+		// act like objects
+		System.out.println("Byte Max: " +
+				Byte.MAX_VALUE);
+		System.out.println("Byte Min: " +
+				Byte.MIN_VALUE);
+		System.out.println("Short Max: " +
+				Short.MAX_VALUE);
+		System.out.println("Short Min: " +
+				Short.MIN_VALUE);
+		System.out.println("Char Max: " +
+				(Character.MAX_VALUE+0));
+		System.out.println("Char Min: " +
+				(Character.MIN_VALUE+0));
+		System.out.println("Int Max: " +
+				Integer.MAX_VALUE);
+		System.out.println("Int Min: " +
+				Integer.MIN_VALUE);
+		System.out.println("Float Max: " +
+				Float.MAX_VALUE);
+		System.out.println("Float Min: " +
+				Float.MIN_VALUE);
+		System.out.println("Double Max: " +
+				Double.MAX_VALUE);
+		System.out.println("Double Min: " +
+				Double.MIN_VALUE);
+		System.out.println("Long Max: " +
+				Long.MAX_VALUE);
+		System.out.println("Long Min: " +
+				Long.MIN_VALUE);
+ 
+		// Booleans are either true or false
+		// You can't use 0 or anything else
+		boolean happy = true;
+ 
+		// Characters can only store single
+		// characters (must use ')
+		char a = 'a';
+ 
+		// You can also store escaped characters
+		// \n, \t, \b, \f, \r, \", \', \\
+ 
+		// Floating point precision 6 decimals
+		float fNum = 1.1111111111111111F;
+		float fNum2 = 1.1111111111111111F;
+		System.out.println("Float : " +
+				(fNum + fNum2));
+ 
+		// Double precision 15 decimals
+		double dblNum = 1.1111111111111111;
+		double dblNum2 = 1.1111111111111111;
+		System.out.println("Float : " +
+				(dblNum + dblNum2));
+ 
+		// Can use scientific notation
+		double thousand = 1e+3;
+		System.out.println(thousand);
+ 
+		// You can define longs with _
+		long bigNum = 123_456_789;
+ 
+		// ---- CASTING ----
+		// You can convert from smaller types
+		// to larger types automatically
+		int smInt = 10;
+		long smLong = smInt;
+ 
+		// Use (newType) otherwise
+		double cDbl = 1.234;
+		int cInt = (int) cDbl;
+		System.out.println(cInt);
+ 
+		long bigLong = 21474836470L;
+		int bInt = (int) bigLong;
+		System.out.println(bInt);
+ 
+		// Use wrapper class to convert to string
+		String favNum = Double.toString(1.618);
+ 
+		// Convert Strings to primitives with
+		// Byte.parseByte, Boolean.parseBoolean,
+		// and the same format for each type
+		// except for chars
+		int strInt = Integer.parseInt("10");
+ 
+		// ---- MATH ----
+		System.out.println("5 + 4 = "+(5+4));
+		System.out.println("5 - 4 = "+(5-4));
+		System.out.println("5 * 4 = "+(5*4));
+		System.out.println("5 / 4 = "+(5/4));
+		System.out.println("5 % 4 = "+(5%4));
+ 
+		// Math done on integers default to
+		// integer output and doubles return doubles
+		System.out.println("5 / 4 = "+(5.0/4.0));
+ 
+		// incMe++ same as incMe = incMe + 1
+		// Can also decrement with --
+		int incMe = 0;
+		System.out.println("incMe: "+(incMe++));
+		System.out.println("incMe: "+(++incMe));
+ 
+		// incMe = incMe + 10 == incMe += 10
+		// Same with -= *= /= %=
+		incMe += 10;
+ 
+		// Numerous math functions
+		System.out.println("abs(-1) = "+Math.abs(-1));
+		System.out.println("ceil(4.25) = "+Math.ceil(4.25));
+		System.out.println("floor(4.25) = "+Math.floor(4.25));
+		System.out.println("round(4.25) = "+Math.round(4.25));
+		System.out.println("max(4,5) = "+Math.max(4,5));
+		System.out.println("min(4,5) = "+Math.min(4,5));
+		System.out.println("exp(1) = "+Math.exp(1));
+		System.out.println("log(1) = "+Math.log(1));
+		System.out.println("log10(1) = "+Math.log10(1));
+		System.out.println("pow(2,2) = "+Math.pow(2,2));
+		System.out.println("sqrt(4) = "+Math.sqrt(4));
+		System.out.println("cbrt(4) = "+Math.cbrt(4));
+		System.out.println("hypot(5,5) = "+Math.hypot(5,5));
+		System.out.println("PI = "+Math.PI);
+ 
+		// Trig Functions Radians
+		System.out.println("sin(1.5708) = "+Math.sin(1.5708));
+		System.out.println("cos(1.5708) = "+Math.cos(1.5708));
+		System.out.println("tan(1.5708) = "+Math.tan(1.5708));
+		System.out.println("asin(1.5708) = "+Math.asin(1.5708));
+		System.out.println("acos(1.5708) = "+Math.acos(1.5708));
+		System.out.println("atan(1.5708) = "+Math.atan(1.5708));
+		System.out.println("sinh(1.5708) = "+Math.sinh(1.5708));
+		System.out.println("cosh(1.5708) = "+Math.cosh(1.5708));
+		System.out.println("tanh(1.5708) = "+Math.tanh(1.5708));
+		System.out.println("toDegrees(1.5708) = "+Math.toDegrees(1.5708));
+		System.out.println("toRadians(90) = "+Math.toRadians(90));
+ 
+		// Random number between 5 and 20
+		int minNum = 5;
+		int maxNum = 20;
+		int randNum = minNum + (int)(Math.random() *
+				((maxNum - minNum) + 1));
+		System.out.println("Rand : "+randNum);
+ 
+		// ---- STRINGS ----
+		// Strings are objects (Reference Type)
+		// They have built in methods and must
+		// be surrounded with "
+		String name = "Derek";
+ 
+		// Combine strings with +
+		// or +=
+		String wName = name + " Banas";
+		wName += " is my name";
+ 
+		// Conversion is automatic when using
+		// primitives
+		String drsDog = "K" + 9;
+ 
+		// Get character at index
+		System.out.println(wName.charAt(0));
+ 
+		// Does it contain a Derek
+		// startsWith, endsWith
+		System.out.println(wName.contains("Derek"));
+ 
+		// Get index of match
+		System.out.println((wName.indexOf("Derek")));
+ 
+		// Number of characters
+		System.out.println(wName.length());
+ 
+		// Don't use == to compare strings use equals
+		// == would check if they point to the same
+		// memory location
+		// .equalsIgnoreCase ignores case
+		String str1 = "dog";
+		System.out.println("dog equals cat : " +
+		(str1.equals("cat")));
+ 
+		// Compare strings 0 if same, -1 if string
+		// comes before other or 1
+		// compareToIgnoreCase
+		System.out.println(wName.compareTo("ABC"));
+ 
+		// Replace matches
+		// replaceFirst
+		System.out.println(wName.replace("Derek", "Bob"));
+ 
+		// Get string at indexes
+		System.out.println(wName.substring(0,5));
+ 
+		// Turn string into array
+		// Shortcut for printing array (Enhanced For)
+		// toCharArray
+		for(String x: wName.split(" ")) System.out.println(x);
+ 
+		// trim : Deletes whitespace at beginning and end
+		// toUpperCase, toLowerCase
+ 
+		// ---- STRING BUILDER & BUFFER ----
+		// If you have to make many string changes
+		// a StringBuilder may be better
+		// Use a StringBuffer if using threads
+ 
+		// Create StringBuilder
+		StringBuilder sb = new StringBuilder("I'm a string builder");
+ 
+		// Number of characters
+		System.out.println(sb.length());
+ 
+		// Get size set aside
+		// Increase size with ensureCapacity
+		System.out.println(sb.capacity());
+ 
+		// Append a primitive or string
+		sb.append(" Yeah");
+ 
+		// Insert at index
+		System.out.println(sb.insert(6, "Big "));
+ 
+		// Replace at indexes
+		System.out.println(sb.replace(6, 9, "wig"));
+ 
+		// Extract substring
+		System.out.println(sb.substring(6,10));
+ 
+		// Delete characters at indexes
+		System.out.println(sb.delete(6, 10));
+ 
+		// Get char at index
+		System.out.println(sb.charAt((4)));
+ 
+		// Get index for string
+		System.out.println(sb.indexOf("Yeah"));
+ 
+		// ---- ARRAYS ----
+		// Arrays are boxes in memory that hold
+		// multiple values
+ 
+		// Create an array that can hold 10 values
+		int[] a1 = new int[10];
+ 
+		// Assign a value to the first index (address)
+		a1[0] = 1;
+ 
+		// Fill array with a value
+		Arrays.fill(a1,2);
+ 
+		// Get value
+		System.out.println(a1[0]);
+ 
+		// Get size
+		System.out.println(a1.length);
+ 
+		// Create and add values at the same time
+		String[] a2 = {"one","two"};
+ 
+		// Generate an array from 1 to 10 (More Later)
+		int[] oneTo10 = IntStream.rangeClosed(1, 10).toArray();
+ 
+		// The enhanced for loop
+		for(int x: oneTo10) System.out.println(x);
+ 
+		// Find value
+		System.out.println(Arrays.binarySearch(oneTo10, 9));
+ 
+		// Multidimensional array
+		int a3[][] = new int[2][2];
+ 
+		// Create and initialize
+		// a4[How many down][How many across]
+		String[][] a4 = {{"00", "10"},
+				{"01", "11"}};
+ 
+		System.out.println(a4[1][1]);
+ 
+		// a5[How many down][How many across][How many Groups]
+		// a5[3][4][1]
+		String a5[][][] = {{{"000"}, {"100"}, {"200"}, {"300"}},
+				{{"010"}, {"110"}, {"210"}, {"310"}},
+				{{"020"}, {"120"}, {"220"}, {"320"}}};
+		System.out.println(a5[2][3][0]);
+ 
+		// Copy array into another
+		int a6[] = {1,2,3};
+		int a7[] = Arrays.copyOf(a6, 3);
+ 
+		// Compare arrays
+		System.out.println(Arrays.equals(a6, a7));
+ 
+		// Sort array
+		int a8[] = {3,2,1};
+		Arrays.sort(a8);
+		System.out.println(Arrays.toString(a8));
+ 
+		// ---- ARRAYLIST ----
+		// ArrayLists resize and provide for easy
+		// insertion and deletion
+		// Create a String ArrayList with 20 spaces
+		ArrayList<String> aL1 = new ArrayList<String>(20);
+ 
+		// Add value
+		aL1.add("Sue");
+ 
+		// Generate an ArrayList
+		ArrayList<Integer> aL2 = new ArrayList<>(Arrays.asList(1,2,3,4));
+		for(Integer x: aL2) System.out.println(x);
+ 
+		// Get a value
+		System.out.println(aL2.get(1));
+ 
+		// Add a value at index
+		aL2.set(1, 5);
+ 
+		// Delete value (Delete all aL2.clear())
+		aL2.remove(3);
+ 
+		// Iterators are used to cycles through
+		// collections like ArrayLists
+		Iterator it = aL2.iterator();
+ 
+		// Loop while more values exist
+		while(it.hasNext()) {
+			// Output each value
+			System.out.println(it.next());
+		}
+ 
+		// ---- LINKEDLIST ----
+		// Best when you have to make changes
+		// in the middle of the list
+		// Each link has a reference to the value
+		// before and the value after
+		LinkedList<Integer> lL1 = new LinkedList<Integer>();
+ 
+		// Add value
+		lL1.add(1); lL1.add(2); lL1.add(3);
+ 
+		// Add array to list
+		lL1.addAll(Arrays.asList(1,2,3,4));
+ 
+		// Add to front (addLast Also)
+		lL1.addFirst(0);
+ 
+		// Check if in list
+		System.out.println(lL1.contains(4));
+ 
+		// Get index for match
+		System.out.println(lL1.indexOf(4));
+ 
+		// Replace
+		lL1.set(0, 2);
+ 
+		// Get value
+		// Also getFirst, getLast
+		System.out.println(lL1.get(0));
+ 
+		// Delete (clear() removes all)
+		lL1.remove(1);
+ 
+		// Get size
+		System.out.println(lL1.size());
+ 
+		// Convert to array
+		Object[] a9 = lL1.toArray();
+ 
+		// ---- USER INPUT ----
+		// The Scanner object receives user input
+		// using nextShort, nextByte, nextBoolean,
+		// nextInt, nextFloat, nextDouble,
+		// nextLong, nextLine
+		System.out.print("Enter name: ");
+ 
+		// Did the user enter a string
+		// Use hasNextDataType to check if a
+		// valid type was entered
+		if(sc.hasNextLine()){
+			String userName = sc.nextLine();
+			System.out.println("Hello "+userName);
+		}
+ 
+		// Get input using a dialog box
+		String jopName =
+				JOptionPane.showInputDialog("Enter Name");
+		System.out.println("Hello "+jopName);
+ 
+		// ---- CONDITIONALS ----
+		// Relational Operators : == != > < >= <=
+		// Logical Operators : ! && ||
+		int age = 12;
+		if ((age >= 5) && (age <= 6)){
+			System.out.println("Go to Kindergarten");
+		} else if ((age >= 7) && (age <= 13)){
+			System.out.println("Go to Middle School");
+		} else if ((age >= 14) && (age <= 18)){
+			System.out.println("Go to High School");
+		} else {
+			System.out.println("Stay Home");
+		}
+ 
+		System.out.println("true || false = "+(true || false));
+		System.out.println("!true = "+(!true));
+ 
+		// The ternary operator returns the 1st value
+		// when the condition is true and the 2nd
+		// otherwise
+		boolean canVote = (age >= 18) ? true : false;
+		System.out.println("Can Vote : "+canVote);
+ 
+		// Switch is used when you have limited options
+		String lang = "France";
+		switch(lang) {
+		case "Chile": case "Cuba":
+			System.out.println("Hola");
+ 
+			// Without break the next condition
+			// is checked
+			break;
+		case "France":
+			System.out.println("Bonjour");
+			break;
+		case "Japan":
+			System.out.println("Konnichiwa");
+			break;
+		default:
+			System.out.println("Hello");
+		}
+ 
+		// ---- LOOPING ----
+		for(int i = 0; i < 5; i++) {
+			System.out.println(i);
+		}
+ 
+		// while loops as long as a condition is true
+		int wI = 0;
+		while (wI < 20) {
+ 
+			// Only print even numbers
+			if(wI % 2 == 0) {
+				System.out.println(wI);
+				wI++;
+				// Jump back to the beginning of loop
+				continue;
+			}
+			if(wI >= 10) {
+				// Stop looping
+				break;
+			}
+			wI++;
+		}
+ 
+		// Do whiles execute at least once
+		int secretNum = 7;
+		int guess = 0;
+		do {
+			System.out.println("Guess : ");
+			if(sc.hasNextInt()){
+				guess = sc.nextInt();
+			}
+		}while(secretNum != guess);
+		System.out.println("You guessed it");
+ 
+		// ---- METHODS ----
+		System.out.println("5 + 4 = " + getSum(5,4));
+ 
+		// All data passed to a function is pass by
+		// value so changes in the method have no
+		// effect outside of the function
+		int cNum = 0;
+		changeMe(cNum);
+		System.out.println("cNum = " + cNum);
+ 
+		// You can pass a variable number of values
+		// to a method
+		System.out.println("1+2+3 = " + getSum2(1,2,3));
+ 
+		// You can receive multiple values with an array
+		int[] multVA = getNext2(5);
+		// 1 line for loop
+		for(int x: multVA) System.out.println(x);
+ 
+		// Receive multiple values of different types
+		List<Object> randList = getRandList();
+		System.out.println(randList);
+ 
+		// Demonstrate recursion (functions calling
+		// themselves)
+		System.out.println("Fact 4 = " + factorial(4));
+ 
+		// Pass array to method
+		int[] nums = {1,2,3};
+		System.out.println("Sum = " + getSum3(nums));
+ 
+		// ---- EXCEPTION HANDLING ----
+		// Used to catch errors that could crash
+		// our program
+ 
+		// Surround problem code with a try block
+		try {
+			// int badInt = 10 / 0;
+ 
+			// You can create your own exception
+			// classes or just throw one without
+			throw new Exception("Bad Stuff");
+		}
+		// Catch division by 0
+		catch(ArithmeticException ex) {
+			System.out.println("Can't divide by zero");
+			System.out.println(ex.getMessage());
+			System.out.println(ex.toString());
+		}
+		// Catch any exception
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		// Executed whether exception occurred or not
+		// Used to close files, DBs and other clean up
+		finally {
+			System.out.println("Clean Up");
+		}
+ 
+		// ---- ENUMERATED TYPES ----
+		Day favDay = Day.Monday;
+		System.out.println("Fav day is "+favDay);
+ 
+	}
+}
+Warrior.java
+
+package com.newthinktank;
+
+// Every real world object has attributes
+// (height, weight) and capabilities
+// (eat, run)
+// With object oriented programming we store
+// attributes in fields and model capabilities
+// using methods
+
+public class Warrior {
+	
+	// Class fields can be : 
+	// public : any code can change
+	// protected : class code and subclasses
+	// can change
+	// private : only class code can change
+	protected String name = "Warrior";
+	public int health = 0;
+	public int attkMax = 0;
+	public int blockMax = 0;
+	
+	// ---- INTERFACE ADD ON ----
+	// We are using an instance variable that
+	// is a subclass of the Teleports interface
+	// At run time subclasses can define whether
+	// they can teleport or not
+	public Teleports teleportType;
+	// ---- END OF INTERFACE ADD ON ----
+	
+	// The constructor is called each time you
+	// want to create a new Warrior object
+	public Warrior() {
+		
+	}
+	
+	// You can have constructors with and
+	// without attributes
+	public Warrior(String name, int health,
+			int attkMax, int blockMax) {
+		this.setName(name);
+		this.health = health;
+		this.attkMax = attkMax;
+		this.blockMax = blockMax;
+	}
+	
+	// Model what happens when a warrior attacks
+	// and blocks
+	public int attack() {
+		return 1 + (int)(Math.random() * 
+				((attkMax - 1) + 1));
+	}
+	
+	public int block() {
+		return 1 + (int)(Math.random() * 
+				((blockMax - 1) + 1));
+	}
+
+	// Getters and setters provide access to
+	// private, or protected fields
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	// ---- INTERFACE ADD ON ----
+	// Have teleportType handle output depending
+	// on settings
+	public String teleport() {
+		return teleportType.teleport();
+	}
+	
+	// Allows for dynamic changing of teleporting type
+	public void setTeleportAbility(Teleports newTeleportType) {
+		teleportType = newTeleportType;
+	}
+	// ---- END INTERFACE ADD ON ----
+
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+package com.newthinktank;
+ 
+// Every real world object has attributes
+// (height, weight) and capabilities
+// (eat, run)
+// With object oriented programming we store
+// attributes in fields and model capabilities
+// using methods
+ 
+public class Warrior {
+	
+	// Class fields can be : 
+	// public : any code can change
+	// protected : class code and subclasses
+	// can change
+	// private : only class code can change
+	protected String name = "Warrior";
+	public int health = 0;
+	public int attkMax = 0;
+	public int blockMax = 0;
+	
+	// ---- INTERFACE ADD ON ----
+	// We are using an instance variable that
+	// is a subclass of the Teleports interface
+	// At run time subclasses can define whether
+	// they can teleport or not
+	public Teleports teleportType;
+	// ---- END OF INTERFACE ADD ON ----
+	
+	// The constructor is called each time you
+	// want to create a new Warrior object
+	public Warrior() {
+		
+	}
+	
+	// You can have constructors with and
+	// without attributes
+	public Warrior(String name, int health,
+			int attkMax, int blockMax) {
+		this.setName(name);
+		this.health = health;
+		this.attkMax = attkMax;
+		this.blockMax = blockMax;
+	}
+	
+	// Model what happens when a warrior attacks
+	// and blocks
+	public int attack() {
+		return 1 + (int)(Math.random() * 
+				((attkMax - 1) + 1));
+	}
+	
+	public int block() {
+		return 1 + (int)(Math.random() * 
+				((blockMax - 1) + 1));
+	}
+ 
+	// Getters and setters provide access to
+	// private, or protected fields
+	public String getName() {
+		return name;
+	}
+ 
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	// ---- INTERFACE ADD ON ----
+	// Have teleportType handle output depending
+	// on settings
+	public String teleport() {
+		return teleportType.teleport();
+	}
+	
+	// Allows for dynamic changing of teleporting type
+	public void setTeleportAbility(Teleports newTeleportType) {
+		teleportType = newTeleportType;
+	}
+	// ---- END INTERFACE ADD ON ----
+ 
+}
+Battle.java
+
+package com.newthinktank;
+
+// Battle is a utility class so
+// it contains only static methods
+
+// Static methods and fields should
+// be used when it doesn't make sense
+// for a real world object to be able 
+// to perform and action, or when values 
+// should be shared by all objects
+public class Battle {
+
+	// Receive warrior objects
+	public static void startFight(Warrior w1,
+			Warrior w2) throws InterruptedException {
+		// Loop giving each a chance to attack
+		// and block
+		while(true) {
+			if(getAttackResult(w1, w2).equals("Game Over")) {
+				System.out.println("Game Over");
+				break;
+			}
+			if(getAttackResult(w2, w1).equals("Game Over")) {
+				System.out.println("Game Over");
+				break;
+			}
+		}
+	}
+	
+	// Accept 2 warriors
+	public static String getAttackResult(Warrior wA, 
+			Warrior wB) throws InterruptedException {
+		// Get warriors attack and block
+		int wAAttkAmt = wA.attack();
+		int wBBlockAmt = wB.block();
+		
+		// Subtract block from attack
+		int dmg2WarB = wAAttkAmt - wBBlockAmt;
+		
+		// If damaged subtract damage from health
+		if(dmg2WarB > 0) {
+			wB.health = wB.health - dmg2WarB;
+		} else dmg2WarB = 0;
+		
+		// Print out a damage report
+		// printf is for formatted output
+		// %s : Strings
+		// %d : Integers
+		// %f : Floats / Doubles 
+		// %.2f : To limit to 2 decimals
+		// %c : Characters
+		// %e : Scientific Notation
+		// %t : Dates 
+		// %b : Booleans
+		System.out.printf("%s Attacks %s and deals "
+				+ "%d Damage\n", wA.getName(), 
+				wB.getName(), dmg2WarB);
+		
+		// Output health changes
+		System.out.printf("%s Has %d Health\n\n", 
+				wB.getName(), wB.health);
+		
+		// Pauses execution for 1500 milliseconds
+		Thread.sleep(1500);
+		
+		// Check if health fell below 0
+		if(wB.health <= 0) {
+			System.out.printf("%s has Died and %s is "
+					+ "Victorious\n", wB.getName(),
+					wA.getName());
+			return "Game Over";
+		} else return "Fight Again";
+	}
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+package com.newthinktank;
+ 
+// Battle is a utility class so
+// it contains only static methods
+ 
+// Static methods and fields should
+// be used when it doesn't make sense
+// for a real world object to be able 
+// to perform and action, or when values 
+// should be shared by all objects
+public class Battle {
+ 
+	// Receive warrior objects
+	public static void startFight(Warrior w1,
+			Warrior w2) throws InterruptedException {
+		// Loop giving each a chance to attack
+		// and block
+		while(true) {
+			if(getAttackResult(w1, w2).equals("Game Over")) {
+				System.out.println("Game Over");
+				break;
+			}
+			if(getAttackResult(w2, w1).equals("Game Over")) {
+				System.out.println("Game Over");
+				break;
+			}
+		}
+	}
+	
+	// Accept 2 warriors
+	public static String getAttackResult(Warrior wA, 
+			Warrior wB) throws InterruptedException {
+		// Get warriors attack and block
+		int wAAttkAmt = wA.attack();
+		int wBBlockAmt = wB.block();
+		
+		// Subtract block from attack
+		int dmg2WarB = wAAttkAmt - wBBlockAmt;
+		
+		// If damaged subtract damage from health
+		if(dmg2WarB > 0) {
+			wB.health = wB.health - dmg2WarB;
+		} else dmg2WarB = 0;
+		
+		// Print out a damage report
+		// printf is for formatted output
+		// %s : Strings
+		// %d : Integers
+		// %f : Floats / Doubles 
+		// %.2f : To limit to 2 decimals
+		// %c : Characters
+		// %e : Scientific Notation
+		// %t : Dates 
+		// %b : Booleans
+		System.out.printf("%s Attacks %s and deals "
+				+ "%d Damage\n", wA.getName(), 
+				wB.getName(), dmg2WarB);
+		
+		// Output health changes
+		System.out.printf("%s Has %d Health\n\n", 
+				wB.getName(), wB.health);
+		
+		// Pauses execution for 1500 milliseconds
+		Thread.sleep(1500);
+		
+		// Check if health fell below 0
+		if(wB.health <= 0) {
+			System.out.printf("%s has Died and %s is "
+					+ "Victorious\n", wB.getName(),
+					wA.getName());
+			return "Game Over";
+		} else return "Fight Again";
+	}
+}
+WarriorGame.java
+
+package com.newthinktank;
+
+public class WarriorGame {
+
+	public static void main(String[] args) throws InterruptedException {
+		Warrior thor = new Warrior("Thor", 800, 130, 40);
+		// Warrior loki = new Warrior("Loki", 800, 85, 40);
+		
+		Warrior loki = new DodgeWarrior("Loki", 800, 85, 40, .25);
+		
+		Battle.startFight(thor, loki);
+		
+		// ---- INTERFACE ADD ON ----
+		// Test if Loki can teleport
+		System.out.println("Loki " + loki.teleport());
+		
+		// Change ability
+		loki.setTeleportAbility(new CantTeleport());
+		System.out.println("Loki " + loki.teleport());
+	}
+
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+package com.newthinktank;
+ 
+public class WarriorGame {
+ 
+	public static void main(String[] args) throws InterruptedException {
+		Warrior thor = new Warrior("Thor", 800, 130, 40);
+		// Warrior loki = new Warrior("Loki", 800, 85, 40);
+		
+		Warrior loki = new DodgeWarrior("Loki", 800, 85, 40, .25);
+		
+		Battle.startFight(thor, loki);
+		
+		// ---- INTERFACE ADD ON ----
+		// Test if Loki can teleport
+		System.out.println("Loki " + loki.teleport());
+		
+		// Change ability
+		loki.setTeleportAbility(new CantTeleport());
+		System.out.println("Loki " + loki.teleport());
+	}
+ 
+}
+DodgeWarrior.java
+
+package com.newthinktank;
+
+import java.util.Random;
+
+public class DodgeWarrior extends Warrior {
+	double dodgePercent;
+	Random rand = new Random();
+	
+	public DodgeWarrior(String name, int health,
+			int attkMax, int blockMax, 
+			double dodgePercent) {
+		
+		// Initialize with Warriors constructor
+		super(name, health, attkMax, blockMax);
+		this.dodgePercent = dodgePercent;
+		
+		// ---- INTERFACE ADD ON ----
+		// We can define teleport ability with 
+		// one line of code
+		teleportType = new CanTeleport();
+	}
+	
+	public int block() {
+		
+		double chance = rand.nextDouble();
+		if(chance <= dodgePercent) {
+			System.out.printf("%s Dodged the Attack\n\n",
+					this.getName());
+			return 10000;
+		} else {
+			return 1 + (int)(Math.random() * 
+					((blockMax - 1) + 1));
+		}
+	}
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+package com.newthinktank;
+ 
+import java.util.Random;
+ 
+public class DodgeWarrior extends Warrior {
+	double dodgePercent;
+	Random rand = new Random();
+	
+	public DodgeWarrior(String name, int health,
+			int attkMax, int blockMax, 
+			double dodgePercent) {
+		
+		// Initialize with Warriors constructor
+		super(name, health, attkMax, blockMax);
+		this.dodgePercent = dodgePercent;
+		
+		// ---- INTERFACE ADD ON ----
+		// We can define teleport ability with 
+		// one line of code
+		teleportType = new CanTeleport();
+	}
+	
+	public int block() {
+		
+		double chance = rand.nextDouble();
+		if(chance <= dodgePercent) {
+			System.out.printf("%s Dodged the Attack\n\n",
+					this.getName());
+			return 10000;
+		} else {
+			return 1 + (int)(Math.random() * 
+					((blockMax - 1) + 1));
+		}
+	}
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Teleports.java
+
+package com.newthinktank;
+
+// Interfaces are empty classes
+// They define the metods you must use, but
+// none of the code
+
+// Classes can only inherit from 1 class
+// but they can inherit numerous interfaces
+
+// We'll use an interface to define whether 
+// a warrior can or can't teleport. We will
+// add this capability without making many 
+// changes to the class effected
+
+public interface Teleports {
+	String teleport();
+}
+
+class CanTeleport implements Teleports{
+
+	@Override
+	public String teleport() {
+		return "Teleports Away";
+	}
+	
+}
+
+class CantTeleport implements Teleports{
+
+	@Override
+	public String teleport() {
+		return "Fails at Teleporting";
+	}
+	
+}
+
+/* ---- TRADITIONAL INTERFACE ----
+public interface Pizza {
+    public String getDescription();
+    public double getCost();
+}
+
+public class PlainPizza implements Pizza {
+	public String getDescription() {
+		return "Thin dough";
+	}
+	public double getCost() {
+		System.out.println("Cost of Dough: " + 4.00);
+		return 4.00;
+	}
+ 
+}
+
+// ---- ABSTRACT CLASSES ----
+// Used when you don't require all methods to 
+ * be implemented. They can also have methods
+ * with code
+
+public abstract class Crashable{
+	boolean carDrivable = true;
+	public void youCrashed(){
+		this.carDrivable = false;
+	}
+	public abstract void setCarStrength(int carStrength);
+	public abstract int getCarStrength();
+}
+
+*/
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+package com.newthinktank;
+ 
+// Interfaces are empty classes
+// They define the metods you must use, but
+// none of the code
+ 
+// Classes can only inherit from 1 class
+// but they can inherit numerous interfaces
+ 
+// We'll use an interface to define whether 
+// a warrior can or can't teleport. We will
+// add this capability without making many 
+// changes to the class effected
+ 
+public interface Teleports {
+	String teleport();
+}
+ 
+class CanTeleport implements Teleports{
+ 
+	@Override
+	public String teleport() {
+		return "Teleports Away";
+	}
+	
+}
+ 
+class CantTeleport implements Teleports{
+ 
+	@Override
+	public String teleport() {
+		return "Fails at Teleporting";
+	}
+	
+}
+ 
+/* ---- TRADITIONAL INTERFACE ----
+public interface Pizza {
+    public String getDescription();
+    public double getCost();
+}
+ 
+public class PlainPizza implements Pizza {
+	public String getDescription() {
+		return "Thin dough";
+	}
+	public double getCost() {
+		System.out.println("Cost of Dough: " + 4.00);
+		return 4.00;
+	}
+ 
+}
+ 
+// ---- ABSTRACT CLASSES ----
+// Used when you don't require all methods to 
+ * be implemented. They can also have methods
+ * with code
+ 
+public abstract class Crashable{
+	boolean carDrivable = true;
+	public void youCrashed(){
+		this.carDrivable = false;
+	}
+	public abstract void setCarStrength(int carStrength);
+	public abstract int getCarStrength();
+}
+ 
+*/
+JavaTut2.java
+
+JavaTut2Java
+package com.newthinktank;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+//Used to generate ranges
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.io.*;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.LinkedList;
+import java.util.regex.*;
+
+public class JavaTut2 {
+
+	public static void main(String[] args) {
+		
+		// ---- STREAMS ----
+		// Streams represent groups of objects
+		// you can perform aggregate operations on
+		
+		// Map performs an operation on each value
+		// IntStream is used with ints
+		// rangeClosed generates a list from start to finish
+		// Boxed returns list boxed to an Integer
+		// Collect process the list elements into a container
+		List<Integer> oneTo10 = IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toList());
+		
+		List<Integer> squares = oneTo10.stream().map(x -> x*x).collect(Collectors.toList());
+		
+		for(Integer x: squares) System.out.println(x);
+		
+		// Filter eliminates values based on a condition
+		List<Integer> evens = oneTo10.stream().filter(x -> (x % 2) == 0).collect(Collectors.toList());
+		for(Integer x: evens) System.out.println(x);
+		
+		// Limit output to 5
+		IntStream limitTo5 = IntStream.range(1, 10).limit(5);
+		limitTo5.forEach(System.out::println);
+		
+		int multAll = IntStream.range(1, 5).reduce(1, (x, y) -> x * y);
+		System.out.println(multAll);
+		
+		// Map to double
+		DoubleStream stream = IntStream.range(1, 5).mapToDouble(i -> i);
+		
+		// Generate statistics
+		IntSummaryStatistics iStats = IntStream.range(1, 10).summaryStatistics();
+		System.out.println("Avg " + iStats.getAverage());
+		System.out.println("Sum " + iStats.getSum());
+		System.out.println("Min " + iStats.getMin());
+		System.out.println("Max " + iStats.getMax());
+		
+		// ---- REGULAR EXPRESSIONS ----
+		// You can use character codes to search for
+		// matching data
+		
+		// ape followed by a space \\s
+		// Other white space escapes: \b \f \n
+		// \r \t \v
+		// \\S : Anything not a space
+		regexChecker("ape\\s", "ape at apex");
+		
+		// Match one of many characters with []
+		regexChecker("[crmfp]at", 
+				"Cat rat mat fat pat");
+		
+		// Match characters in range and ignore case
+		regexChecker("(?i)[c-f]at", 
+				"Cat rat mat fat pat");
+		
+		// Match any character except [^]
+		regexChecker("[^c-f]at", 
+				"Cat rat mat fat pat");
+		
+		// Replace 1 - 4 letter p words with ant
+		// \\w : Matches any single letter or number
+		// \\w{5} : Would match 5 letters
+		// \\W : Anyhting not a letter or number
+		System.out.println(
+				"pie pizza pork ".replaceAll(
+				"p\\w{1,3}\\s", "ant "));
+		
+		// Match only acronyms with periods
+		// . matches any single character
+		// \\. escapes .
+		regexChecker(".\\..\\..", "F.B.I. I.R.S. CIA");
+		
+		// Match only 4 digit numbers
+		// \\D : Anything not a number
+		regexChecker("\\d{4}", "1 23 456 7890");
+		
+		// Match telephone #
+		regexChecker("\\w{3}-\\w{3}-\\w{4}",
+				"412-555-1212");
+		
+		// Match 1 or more with +
+		// Match emails
+		regexChecker(
+				"[\\w._%+-]{1,20}@[\\w.-]{2,20}.[A-Za-z]{2,3}", 
+				"db@aol.com m@.com @apple.com db@.com");
+		
+		// Match 0 or more
+		regexChecker("[cat]+s?", "cat cats");
+		
+		// Match 0 or more with *
+		regexChecker("[doctor]+['s]*",
+				"doctor doctors doctor's");
+		
+		// Greedy versus lazy matching
+		String rStr1 = "<name>Life On Mars</name><name>Freaks and Geeks</name>";
+		regexChecker("<name>.*</name>", rStr1);
+		
+		// To get the smallest possible match use
+		// *? +? or {n,}?
+		regexChecker("<name>.*?</name>", rStr1);
+		
+		// ---- LAMBDA EXPRESSIONS ----
+		// Lambda expressions are functions that
+		// can be passed as if they are objects
+		ArrayList<Integer> oneTo5 = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+		
+		// Multiply each value by 2
+		oneTo5.forEach(x -> System.out.println(x*2));
+		
+		// Print only evens
+		oneTo5.forEach(x -> { if (x%2 == 0) System.out.println(x); });
+		
+		// Generate Fibonacci numbers
+		List<Integer> fib = new LinkedList<Integer>();
+		
+		// iterate creates an infinite stream starting
+		// with 0, 1 as we define and then create the next
+		// value by adding the previous 2
+		// We limit to 10 results
+		// map stores the result
+		// collect process the list elements into a 
+		// container 
+		fib = Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0] + t[1]})
+                .limit(10)
+                .map(n -> n[0])
+                .collect(Collectors.toList());
+		fib.forEach(x -> System.out.println(x));
+		
+		// ---- FILE IO ----
+		// A File object is a file or directory
+		// Create a file object not a file on the drive
+		File f1 = new File("f1.log");
+		
+		// Create a file on the hardrive
+		try {
+			if(f1.createNewFile()) {
+				System.out.println("File Created");
+				
+				// Rename the file
+				f1.renameTo(new File("f1BU.log"));
+				
+				// Delete the file
+				f1.delete();
+				
+			} else {
+				System.out.println("File not Created");
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// File object tied to a directory
+		File d1 = new File("/");
+				
+		// Check if we have a directory and print files
+		if(d1.isDirectory()) {
+			File[] files = d1.listFiles();
+			for(File x : files) System.out.println(x.getName());
+		}
+		
+		// A stream is a sequence of characters
+		// Character Streams are strings
+		// Binary Streams are bytes of data from
+		// primitive types
+		// Create a file for writing
+		File f2 = new File("f2.txt");
+		try {
+			PrintWriter pw = 
+					// Formats the data you are writing
+					new PrintWriter(
+							// Saves data until it is time to write
+							new BufferedWriter(
+									// Writes characters to the file
+									// Add FileWriter(f2, true) to append
+									new FileWriter(f2)), true);
+			// Write text to the file
+			pw.println("This is sample text");
+			// Close the file
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// Reading from a file
+		f2 = new File("f2.txt");
+		
+		try {
+			// Reads data 1 line at a time
+			BufferedReader bR = new BufferedReader(
+					// Reads 1 character at a time
+					new FileReader(f2));
+			
+			// Read the line
+			String text = bR.readLine();
+			
+			// Stop when null is received (End of File)
+			while(text != null) {
+				System.out.println(text);
+				text = bR.readLine();
+			}
+			bR.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		// ---- WRITING BINARY DATA ----
+		// You don't have to nest the constructors
+		File f3 = new File("f3.dat");
+		
+		// Connects to file to write raw bytes
+		FileOutputStream fOS;
+		
+		try {
+			
+			// FileOutputStream(f3, true) to append
+			fOS = new FileOutputStream(f3);
+			
+			// Adds buffering t write in bulk
+			BufferedOutputStream bOS = new BufferedOutputStream(fOS);
+			
+			// Allows you to write primitives to the stream
+			DataOutputStream dOS = new DataOutputStream(bOS);
+			
+			String name = "Derek";
+			int age = 44;
+			double bal = 1234.56;
+			
+			// Write string
+			dOS.writeUTF(name);
+			// Write int
+			dOS.writeInt(age);
+			// Write double
+			dOS.writeDouble(bal);
+			// Close file
+			dOS.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// Reading with a DataInputStream
+		f3 = new File("f3.dat");
+		
+		// File used for the input stream
+		FileInputStream fIS;
+		
+		try {
+			fIS = new FileInputStream(f3);
+			
+			// Adds buffering while pulling data
+			BufferedInputStream bIS = new BufferedInputStream(fIS);
+			
+			// Provides methods for reading data
+			DataInputStream dIS = new DataInputStream(bIS);
+			System.out.println(dIS.readUTF());
+			System.out.println(dIS.readInt());
+			System.out.println(dIS.readDouble());
+			fIS.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// ---- GENERICS ----
+		// Generics allow you to use any object type
+		// Generic methods and classes can work with
+		// any type automatically
+		String[] gA1 = {"one","two"};
+		printStuff(gA1);
+		Integer[] gA2 = {1,2,3,4};
+		printStuff(gA2);
+		
+		// Using a wildcard to print any type of
+		// collection
+		ArrayList<Integer> aL1 = new ArrayList<>(Arrays.asList(1,2,3,4));
+		printAL(aL1);
+		
+		// Using a generic custom class
+		MyGeneric<Integer> myGI = new MyGeneric<Integer>();
+		myGI.setVal(10);
+		System.out.println(myGI.getVal());
+		MyGeneric<String> myGS = new MyGeneric<String>();
+		myGS.setVal("Dog");
+		System.out.println(myGS.getVal());
+		
+		// ---- THREADS ----
+		// A thread is a block of code that is expected
+		// to execute while other blocks of code execute
+		
+		// Using threads using a class that implements
+		// the Runnable interface
+		// Create a Thread
+		Thread t1 = new Thread(new MyThread(), 
+				"Thread 1");
+		Thread t2 = new Thread(new MyThread(), 
+				"Thread 2");
+		Thread t3 = new Thread(new MyThread(), 
+				"Thread 3");
+
+		/*
+		t1.start();
+		t2.start();
+		t3.start();
+		*/
+		
+		// Have the 3rd thread wait for the 1st
+		// to finish with join
+		t1.start();
+		t2.start();
+		try {
+            t1.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        t3.start();
+        
+        
+        ThreadTest tT1 = new ThreadTest(new Customer("Sam"));
+        tT1.start();
+        ThreadTest tT2 = new ThreadTest(new Customer("Sue"));
+        tT2.start();
+        ThreadTest tT3 = new ThreadTest(new Customer("Sid"));
+        tT3.start();
+		
+		// ---- DATABASES ----
+        // I'm using MySQL 5.7 because it is easier
+        // to work with than MySQL 5.8 or 8
+        // Download https://dev.mysql.com/downloads/connector/j/
+		// Platform Independent
+		// Right click Project folder -> Build Path
+		// Configure Build Path -> Library Tab ->
+		// Add External Jars -> Select mysql-connector-java-8.0.15.jar
+        /*
+         * mysql -u root -p
+         * UPDATE mysql.user SET Password=PASSWORD('NEWPW') 
+         * WHERE User='root';
+         * CREATE DATABASE students;
+         * USE students;
+         * CREATE TABLE student(
+        		 first_name VARCHAR(30) NOT NULL,
+        		 last_name VARCHAR(30) NOT NULL,
+        		 street VARCHAR(50) NOT NULL,
+        		 student_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY);
+        		 
+        	INSERT INTO student VALUES('Dale', 'Cooper', '123 Main', NULL);
+        	INSERT INTO student VALUES('Harry', 'Truman', '122 Main', NULL);
+        	CREATE USER 'sdbadmin'@'localhost' IDENTIFIED BY 'turtledove';
+        	GRANT ALL PRIVILEGES ON students.student TO 'sdbadmin'@'localhost' IDENTIFIED BY 'turtledove';
+        	SHOW GRANTS FOR 'sdbadmin'@'localhost';
+         */
+        
+        Connection con;
+        
+        try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String url = "jdbc:mysql://localhost/Students";
+	        String user = "sdbadmin";
+	        String pw = "turtledove";
+	        
+	        // Used to issue queries to the DB
+	        con = DriverManager.getConnection(url, user, pw);
+	        
+	        // Sends queries to the DB for results
+	        Statement s = con.createStatement();
+	        
+	        // Add a new entry
+	        String query = "INSERT INTO STUDENT " + 
+	        "(first_name, last_name, street, student_id) " + 
+	        "VALUES (" +
+	        "'Shelly', 'Johnson', '321 Main', NULL)";
+	        
+	        // Execute the Query
+	        s.executeUpdate(query);
+	        
+	        // Get results
+	        query = "SELECT first_name, last_name, street " + 
+	        "FROM student";
+	        
+	        // Cycle through the results
+	        ResultSet result = s.executeQuery(query);
+	        
+	        // Also getBoolean, getDate, getDouble, getInt,
+	        // getLong
+	        while(result.next()) {
+	        	System.out.println(result.getString("first_name"));
+	        	System.out.println(result.getString("last_name"));
+	        	System.out.println(result.getString("street"));
+	        }
+	        
+	        // Close DB connection
+	        con.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	// ---- REGULAR EXPRESSION METHOD ----
+	public static void regexChecker(String theRegex, 
+			String str2Check) {
+		
+		// You define the regex using pattern
+		Pattern regexPattern = 
+				Pattern.compile(theRegex);
+		
+		// Matcher searches a string for a match
+		Matcher regexMatcher = 
+				regexPattern.matcher(str2Check);
+				
+		// Cycle through the positive matches and 
+		// print them to screen
+		// Make sure string isn't empty and trim 
+		// off any whitespace
+		while ( regexMatcher.find() ){
+			if (regexMatcher.group().length() != 0){
+				System.out.println( regexMatcher.group().trim() );
+				// You can get the starting and ending indexs
+				System.out.println( "Start Index: " + regexMatcher.start());
+				System.out.println( "Start Index: " + regexMatcher.end());
+			}
+		}
+	}
+	
+	// ---- GENERIC METHODS ----
+	// You define the type using angle brackets
+	// and an uppercase letter
+	public static <E> void printStuff(E[] arr) {
+		for(E x : arr) System.out.println(x);
+	}
+	
+	// Use the wildcard ? when working with collections
+	// You can define that you only want to accept
+	// objects that subclass a class using
+	// ArrayList<? extends YourClass>
+	public static void printAL(ArrayList<?> aL) {
+		for(Object x : aL) System.out.println(x);
+	}
+
+}
+
+//---- GENERIC CLASS ----
+class MyGeneric<T>{
+	T val;
+	
+	public void setVal(T val) {
+		this.val = val;
+	}
+	
+	public T getVal() {
+		return val;
+	}
+}
+
+// ---- THREAD CLASSES ----
+// Make a class object runnable by implementing 
+// Runnable
+class MyThread implements Runnable {
+	@Override
+	public void run() {
+		// Print number of active threads
+		System.out.println("Active Threads : " + 
+				Thread.activeCount());
+		
+		
+		System.out.println("Start Thread : " + 
+				Thread.currentThread().getName());
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("End Thread : " + 
+				Thread.currentThread().getName());
+	}
+	
+}
+
+class Customer{
+	public String name;
+	
+	public Customer(String name) {
+		this.name = name;
+	}
+}
+
+class BankAccount {
+	static BankAccount account;
+	static int balance = 100;
+	static Customer cust;
+	
+	// This is how you set up a singleton
+	// where there is only one BankAccount
+	public static BankAccount getAccount(Customer cust) {
+		if(account == null) {
+			account = new BankAccount();
+		}
+		BankAccount.cust = cust;
+		return account;
+	}
+	
+	public static int getBalance() {
+		return balance;
+	}
+	
+	// By marking as synchronized only one
+	// thread can execute at a time
+	public synchronized void withdraw(int bal) {
+		try {
+			if (balance >= bal) {
+				System.out.println(cust.name + 
+						" requested $" + bal);
+				Thread.sleep(1000);
+				balance -= bal;
+				System.out.println(cust.name + 
+						" received $" + bal);
+			} else {
+				System.out.println(cust.name + 
+						" tried to exceed balance");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Current Balance : $" + 
+		balance);
+		System.out.println();
+	}
+}
+
+class ThreadTest extends Thread implements Runnable{
+	Customer cust;
+	
+	public ThreadTest(Customer cust) {
+		this.cust = cust;
+	}
+	@Override
+	public void run() {
+		for (int i = 0; i < 4; i++) {
+			try {
+				BankAccount account = BankAccount.getAccount(cust);
+				account.withdraw(10);
+				Thread.sleep(1000);
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+package com.newthinktank;
+ 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+//Used to generate ranges
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.io.*;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.LinkedList;
+import java.util.regex.*;
+ 
+public class JavaTut2 {
+ 
+	public static void main(String[] args) {
+		
+		// ---- STREAMS ----
+		// Streams represent groups of objects
+		// you can perform aggregate operations on
+		
+		// Map performs an operation on each value
+		// IntStream is used with ints
+		// rangeClosed generates a list from start to finish
+		// Boxed returns list boxed to an Integer
+		// Collect process the list elements into a container
+		List<Integer> oneTo10 = IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toList());
+		
+		List<Integer> squares = oneTo10.stream().map(x -> x*x).collect(Collectors.toList());
+		
+		for(Integer x: squares) System.out.println(x);
+		
+		// Filter eliminates values based on a condition
+		List<Integer> evens = oneTo10.stream().filter(x -> (x % 2) == 0).collect(Collectors.toList());
+		for(Integer x: evens) System.out.println(x);
+		
+		// Limit output to 5
+		IntStream limitTo5 = IntStream.range(1, 10).limit(5);
+		limitTo5.forEach(System.out::println);
+		
+		int multAll = IntStream.range(1, 5).reduce(1, (x, y) -> x * y);
+		System.out.println(multAll);
+		
+		// Map to double
+		DoubleStream stream = IntStream.range(1, 5).mapToDouble(i -> i);
+		
+		// Generate statistics
+		IntSummaryStatistics iStats = IntStream.range(1, 10).summaryStatistics();
+		System.out.println("Avg " + iStats.getAverage());
+		System.out.println("Sum " + iStats.getSum());
+		System.out.println("Min " + iStats.getMin());
+		System.out.println("Max " + iStats.getMax());
+		
+		// ---- REGULAR EXPRESSIONS ----
+		// You can use character codes to search for
+		// matching data
+		
+		// ape followed by a space \\s
+		// Other white space escapes: \b \f \n
+		// \r \t \v
+		// \\S : Anything not a space
+		regexChecker("ape\\s", "ape at apex");
+		
+		// Match one of many characters with []
+		regexChecker("[crmfp]at", 
+				"Cat rat mat fat pat");
+		
+		// Match characters in range and ignore case
+		regexChecker("(?i)[c-f]at", 
+				"Cat rat mat fat pat");
+		
+		// Match any character except [^]
+		regexChecker("[^c-f]at", 
+				"Cat rat mat fat pat");
+		
+		// Replace 1 - 4 letter p words with ant
+		// \\w : Matches any single letter or number
+		// \\w{5} : Would match 5 letters
+		// \\W : Anyhting not a letter or number
+		System.out.println(
+				"pie pizza pork ".replaceAll(
+				"p\\w{1,3}\\s", "ant "));
+		
+		// Match only acronyms with periods
+		// . matches any single character
+		// \\. escapes .
+		regexChecker(".\\..\\..", "F.B.I. I.R.S. CIA");
+		
+		// Match only 4 digit numbers
+		// \\D : Anything not a number
+		regexChecker("\\d{4}", "1 23 456 7890");
+		
+		// Match telephone #
+		regexChecker("\\w{3}-\\w{3}-\\w{4}",
+				"412-555-1212");
+		
+		// Match 1 or more with +
+		// Match emails
+		regexChecker(
+				"[\\w._%+-]{1,20}@[\\w.-]{2,20}.[A-Za-z]{2,3}", 
+				"db@aol.com m@.com @apple.com db@.com");
+		
+		// Match 0 or more
+		regexChecker("[cat]+s?", "cat cats");
+		
+		// Match 0 or more with *
+		regexChecker("[doctor]+['s]*",
+				"doctor doctors doctor's");
+		
+		// Greedy versus lazy matching
+		String rStr1 = "<name>Life On Mars</name><name>Freaks and Geeks</name>";
+		regexChecker("<name>.*</name>", rStr1);
+		
+		// To get the smallest possible match use
+		// *? +? or {n,}?
+		regexChecker("<name>.*?</name>", rStr1);
+		
+		// ---- LAMBDA EXPRESSIONS ----
+		// Lambda expressions are functions that
+		// can be passed as if they are objects
+		ArrayList<Integer> oneTo5 = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+		
+		// Multiply each value by 2
+		oneTo5.forEach(x -> System.out.println(x*2));
+		
+		// Print only evens
+		oneTo5.forEach(x -> { if (x%2 == 0) System.out.println(x); });
+		
+		// Generate Fibonacci numbers
+		List<Integer> fib = new LinkedList<Integer>();
+		
+		// iterate creates an infinite stream starting
+		// with 0, 1 as we define and then create the next
+		// value by adding the previous 2
+		// We limit to 10 results
+		// map stores the result
+		// collect process the list elements into a 
+		// container 
+		fib = Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0] + t[1]})
+                .limit(10)
+                .map(n -> n[0])
+                .collect(Collectors.toList());
+		fib.forEach(x -> System.out.println(x));
+		
+		// ---- FILE IO ----
+		// A File object is a file or directory
+		// Create a file object not a file on the drive
+		File f1 = new File("f1.log");
+		
+		// Create a file on the hardrive
+		try {
+			if(f1.createNewFile()) {
+				System.out.println("File Created");
+				
+				// Rename the file
+				f1.renameTo(new File("f1BU.log"));
+				
+				// Delete the file
+				f1.delete();
+				
+			} else {
+				System.out.println("File not Created");
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// File object tied to a directory
+		File d1 = new File("/");
+				
+		// Check if we have a directory and print files
+		if(d1.isDirectory()) {
+			File[] files = d1.listFiles();
+			for(File x : files) System.out.println(x.getName());
+		}
+		
+		// A stream is a sequence of characters
+		// Character Streams are strings
+		// Binary Streams are bytes of data from
+		// primitive types
+		// Create a file for writing
+		File f2 = new File("f2.txt");
+		try {
+			PrintWriter pw = 
+					// Formats the data you are writing
+					new PrintWriter(
+							// Saves data until it is time to write
+							new BufferedWriter(
+									// Writes characters to the file
+									// Add FileWriter(f2, true) to append
+									new FileWriter(f2)), true);
+			// Write text to the file
+			pw.println("This is sample text");
+			// Close the file
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// Reading from a file
+		f2 = new File("f2.txt");
+		
+		try {
+			// Reads data 1 line at a time
+			BufferedReader bR = new BufferedReader(
+					// Reads 1 character at a time
+					new FileReader(f2));
+			
+			// Read the line
+			String text = bR.readLine();
+			
+			// Stop when null is received (End of File)
+			while(text != null) {
+				System.out.println(text);
+				text = bR.readLine();
+			}
+			bR.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		// ---- WRITING BINARY DATA ----
+		// You don't have to nest the constructors
+		File f3 = new File("f3.dat");
+		
+		// Connects to file to write raw bytes
+		FileOutputStream fOS;
+		
+		try {
+			
+			// FileOutputStream(f3, true) to append
+			fOS = new FileOutputStream(f3);
+			
+			// Adds buffering t write in bulk
+			BufferedOutputStream bOS = new BufferedOutputStream(fOS);
+			
+			// Allows you to write primitives to the stream
+			DataOutputStream dOS = new DataOutputStream(bOS);
+			
+			String name = "Derek";
+			int age = 44;
+			double bal = 1234.56;
+			
+			// Write string
+			dOS.writeUTF(name);
+			// Write int
+			dOS.writeInt(age);
+			// Write double
+			dOS.writeDouble(bal);
+			// Close file
+			dOS.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// Reading with a DataInputStream
+		f3 = new File("f3.dat");
+		
+		// File used for the input stream
+		FileInputStream fIS;
+		
+		try {
+			fIS = new FileInputStream(f3);
+			
+			// Adds buffering while pulling data
+			BufferedInputStream bIS = new BufferedInputStream(fIS);
+			
+			// Provides methods for reading data
+			DataInputStream dIS = new DataInputStream(bIS);
+			System.out.println(dIS.readUTF());
+			System.out.println(dIS.readInt());
+			System.out.println(dIS.readDouble());
+			fIS.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// ---- GENERICS ----
+		// Generics allow you to use any object type
+		// Generic methods and classes can work with
+		// any type automatically
+		String[] gA1 = {"one","two"};
+		printStuff(gA1);
+		Integer[] gA2 = {1,2,3,4};
+		printStuff(gA2);
+		
+		// Using a wildcard to print any type of
+		// collection
+		ArrayList<Integer> aL1 = new ArrayList<>(Arrays.asList(1,2,3,4));
+		printAL(aL1);
+		
+		// Using a generic custom class
+		MyGeneric<Integer> myGI = new MyGeneric<Integer>();
+		myGI.setVal(10);
+		System.out.println(myGI.getVal());
+		MyGeneric<String> myGS = new MyGeneric<String>();
+		myGS.setVal("Dog");
+		System.out.println(myGS.getVal());
+		
+		// ---- THREADS ----
+		// A thread is a block of code that is expected
+		// to execute while other blocks of code execute
+		
+		// Using threads using a class that implements
+		// the Runnable interface
+		// Create a Thread
+		Thread t1 = new Thread(new MyThread(), 
+				"Thread 1");
+		Thread t2 = new Thread(new MyThread(), 
+				"Thread 2");
+		Thread t3 = new Thread(new MyThread(), 
+				"Thread 3");
+ 
+		/*
+		t1.start();
+		t2.start();
+		t3.start();
+		*/
+		
+		// Have the 3rd thread wait for the 1st
+		// to finish with join
+		t1.start();
+		t2.start();
+		try {
+            t1.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        t3.start();
+        
+        
+        ThreadTest tT1 = new ThreadTest(new Customer("Sam"));
+        tT1.start();
+        ThreadTest tT2 = new ThreadTest(new Customer("Sue"));
+        tT2.start();
+        ThreadTest tT3 = new ThreadTest(new Customer("Sid"));
+        tT3.start();
+		
+		// ---- DATABASES ----
+        // I'm using MySQL 5.7 because it is easier
+        // to work with than MySQL 5.8 or 8
+        // Download https://dev.mysql.com/downloads/connector/j/
+		// Platform Independent
+		// Right click Project folder -> Build Path
+		// Configure Build Path -> Library Tab ->
+		// Add External Jars -> Select mysql-connector-java-8.0.15.jar
+        /*
+         * mysql -u root -p
+         * UPDATE mysql.user SET Password=PASSWORD('NEWPW') 
+         * WHERE User='root';
+         * CREATE DATABASE students;
+         * USE students;
+         * CREATE TABLE student(
+        		 first_name VARCHAR(30) NOT NULL,
+        		 last_name VARCHAR(30) NOT NULL,
+        		 street VARCHAR(50) NOT NULL,
+        		 student_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY);
+        		 
+        	INSERT INTO student VALUES('Dale', 'Cooper', '123 Main', NULL);
+        	INSERT INTO student VALUES('Harry', 'Truman', '122 Main', NULL);
+        	CREATE USER 'sdbadmin'@'localhost' IDENTIFIED BY 'turtledove';
+        	GRANT ALL PRIVILEGES ON students.student TO 'sdbadmin'@'localhost' IDENTIFIED BY 'turtledove';
+        	SHOW GRANTS FOR 'sdbadmin'@'localhost';
+         */
+        
+        Connection con;
+        
+        try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String url = "jdbc:mysql://localhost/Students";
+	        String user = "sdbadmin";
+	        String pw = "turtledove";
+	        
+	        // Used to issue queries to the DB
+	        con = DriverManager.getConnection(url, user, pw);
+	        
+	        // Sends queries to the DB for results
+	        Statement s = con.createStatement();
+	        
+	        // Add a new entry
+	        String query = "INSERT INTO STUDENT " + 
+	        "(first_name, last_name, street, student_id) " + 
+	        "VALUES (" +
+	        "'Shelly', 'Johnson', '321 Main', NULL)";
+	        
+	        // Execute the Query
+	        s.executeUpdate(query);
+	        
+	        // Get results
+	        query = "SELECT first_name, last_name, street " + 
+	        "FROM student";
+	        
+	        // Cycle through the results
+	        ResultSet result = s.executeQuery(query);
+	        
+	        // Also getBoolean, getDate, getDouble, getInt,
+	        // getLong
+	        while(result.next()) {
+	        	System.out.println(result.getString("first_name"));
+	        	System.out.println(result.getString("last_name"));
+	        	System.out.println(result.getString("street"));
+	        }
+	        
+	        // Close DB connection
+	        con.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	// ---- REGULAR EXPRESSION METHOD ----
+	public static void regexChecker(String theRegex, 
+			String str2Check) {
+		
+		// You define the regex using pattern
+		Pattern regexPattern = 
+				Pattern.compile(theRegex);
+		
+		// Matcher searches a string for a match
+		Matcher regexMatcher = 
+				regexPattern.matcher(str2Check);
+				
+		// Cycle through the positive matches and 
+		// print them to screen
+		// Make sure string isn't empty and trim 
+		// off any whitespace
+		while ( regexMatcher.find() ){
+			if (regexMatcher.group().length() != 0){
+				System.out.println( regexMatcher.group().trim() );
+				// You can get the starting and ending indexs
+				System.out.println( "Start Index: " + regexMatcher.start());
+				System.out.println( "Start Index: " + regexMatcher.end());
+			}
+		}
+	}
+	
+	// ---- GENERIC METHODS ----
+	// You define the type using angle brackets
+	// and an uppercase letter
+	public static <E> void printStuff(E[] arr) {
+		for(E x : arr) System.out.println(x);
+	}
+	
+	// Use the wildcard ? when working with collections
+	// You can define that you only want to accept
+	// objects that subclass a class using
+	// ArrayList<? extends YourClass>
+	public static void printAL(ArrayList<?> aL) {
+		for(Object x : aL) System.out.println(x);
+	}
+ 
+}
+ 
+//---- GENERIC CLASS ----
+class MyGeneric<T>{
+	T val;
+	
+	public void setVal(T val) {
+		this.val = val;
+	}
+	
+	public T getVal() {
+		return val;
+	}
+}
+ 
+// ---- THREAD CLASSES ----
+// Make a class object runnable by implementing 
+// Runnable
+class MyThread implements Runnable {
+	@Override
+	public void run() {
+		// Print number of active threads
+		System.out.println("Active Threads : " + 
+				Thread.activeCount());
+		
+		
+		System.out.println("Start Thread : " + 
+				Thread.currentThread().getName());
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("End Thread : " + 
+				Thread.currentThread().getName());
+	}
+	
+}
+ 
+class Customer{
+	public String name;
+	
+	public Customer(String name) {
+		this.name = name;
+	}
+}
+ 
+class BankAccount {
+	static BankAccount account;
+	static int balance = 100;
+	static Customer cust;
+	
+	// This is how you set up a singleton
+	// where there is only one BankAccount
+	public static BankAccount getAccount(Customer cust) {
+		if(account == null) {
+			account = new BankAccount();
+		}
+		BankAccount.cust = cust;
+		return account;
+	}
+	
+	public static int getBalance() {
+		return balance;
+	}
+	
+	// By marking as synchronized only one
+	// thread can execute at a time
+	public synchronized void withdraw(int bal) {
+		try {
+			if (balance >= bal) {
+				System.out.println(cust.name + 
+						" requested $" + bal);
+				Thread.sleep(1000);
+				balance -= bal;
+				System.out.println(cust.name + 
+						" received $" + bal);
+			} else {
+				System.out.println(cust.name + 
+						" tried to exceed balance");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Current Balance : $" + 
+		balance);
+		System.out.println();
+	}
+}
+ 
+class ThreadTest extends Thread implements Runnable{
+	Customer cust;
+	
+	public ThreadTest(Customer cust) {
+		this.cust = cust;
+	}
+	@Override
+	public void run() {
+		for (int i = 0; i < 4; i++) {
+			try {
+				BankAccount account = BankAccount.getAccount(cust);
+				account.withdraw(10);
+				Thread.sleep(1000);
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
