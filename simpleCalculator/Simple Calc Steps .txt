@@ -1,0 +1,41 @@
+Step 1-Define App
+
+What program does:
+	Purpose: to calculate 2 values entered by users
+	Input: 2 int values
+	Process: */+- ints
+	Output: calculated nums
+
+Step 2-Draw blueprint
+
+	_________________
+	|      calc	|	lblTitle
+	| enter values	|	lblSubTitle
+	|val 1  [     ]	|	lblVal1 txtval1
+	|val 2  [     ]	|	lblVal2	txtval2
+	|  [+][-][x][/] |	btnAdd btnSub btnMult btnDiv
+	|      [=]	|	btnEqual
+	|    [answer]	|	lblAns
+	|_______________|
+	
+Step 3-Control Type
+	Form
+	lblTitle-Label
+	lblSubTitle=Label
+	lblVal1-Label
+	lblVal2-Label
+	btnAdd-Button
+	btnSub-Button
+	btnMult-Button
+	btnDiv-Button
+	btnEquals-Button
+	lblAns-Label
+
+Step 4-Flow chart
+	Start--> Val 1 and 2 entered--> Calculate vals enters--> Display answer-->End
+
+
+
+
+
+
